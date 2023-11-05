@@ -49,51 +49,55 @@ const Navbar = () => {
                     {/* title */}
                     <div className="flex-1 px-2 mx-2 font-poppins font-bold text-lg italic ">Job City</div>
                     <div className="flex-none hidden lg:block">
-                        <ul className="menu menu-horizontal flex gap-6 text-lg font-medium underline">
+                        <ul className="menu menu-horizontal flex flex-col gap-6 text-lg font-medium underline">
                             {/* Navbar menu content here */}
-                            <NavLink to={"/"} > <button className='underline'> Home</button></NavLink>
-                            <NavLink to={"addJob"} > <button className='underline'>Add job</button></NavLink>
-                            <NavLink to={"myPostedJob"} > <button className='underline'> My Posted job</button></NavLink>
-                            <NavLink to={"myBids"} > <button className='underline'> My Bids</button></NavLink>
-                            <NavLink to={"myBidsRequest"} > <button className='underline'> My Bids request</button></NavLink>
-                            <NavLink to={"register"}> <button className='underline'> register</button></NavLink>
-                      
-                            {
-                                user ? <button onClick={handleSignOut} className='btn btn-ghost mt-2 underline'> sign out</button> :
+                            <div className='flex gap-6 text-lg font-medium underline'>
+                                <NavLink to={"/"} > <button className='underline'> Home</button></NavLink>
+                                <NavLink to={"addJob"} > <button className='underline'>Add job</button></NavLink>
+                                <NavLink to={"myPostedJob"} > <button className='underline'> My Posted job</button></NavLink>
+                                <NavLink to={"myBids"} > <button className='underline'> My Bids</button></NavLink>
+                                <NavLink to={"myBidsRequest"} > <button className='underline'> My Bids request</button></NavLink>
+                            </div>
+                            <div>
+                                <NavLink to={"register"}> <button className='underline'> register</button></NavLink>
 
-                                    // <NavLink to={"/Login"}> <button className='btn'> Log in</button></NavLink>
-                                    <NavLink to={"/Login"}><button className='btn btn-ghost underline'> Log in</button></NavLink>
+                                {
+                                    user ? <button onClick={handleSignOut} className='btn btn-ghost mt-2 underline'> sign out</button> :
 
-
-                            }
-                            <button className='btn btn-ghost underline' onClick={handleGoogle}>Sign in with google</button>
-                            {
-                                user && <div className='flex items-center gap-3'>
-                                    <h1 className='underline p-2 rounded-lg font-bold'>
-                                        {user?.displayName}
-                                    </h1>
-                                    <p><img className='w-3/6 h-[40px] rounded-full' src={user?.photoURL} alt="" /></p>
+                                        // <NavLink to={"/Login"}> <button className='btn'> Log in</button></NavLink>
+                                        <NavLink to={"/Login"}><button className='btn btn-ghost underline'> Log in</button></NavLink>
 
 
-                                </div>
-                            }
-                            {
-                                loggedinUser && <div>
-                                    <h1 className='underline p-2 rounded-lg font-bold flex items-center '>
-                                        {/* <span> <img src={loggedinUser.photoURL} alt="" /></span> */}
-                                        <p><img className='w-3/6 rounded-full' src={loggedinUser.photoURL} alt="" /></p>
+                                }
+                                <button className='btn btn-ghost underline' onClick={handleGoogle}>Sign in with google</button>
+                                {
+                                    user && <div className='flex items-center text-center gap-3'>
+                                        <h1 className='underline p-2 rounded-lg font-bold'>
+                                            {user?.displayName}
+                                        </h1>
+                                        <p className='self-center'><img className='w-3/6 h-[40px] rounded-full ' src={user?.photoURL} alt="" /></p>
 
-                                        {loggedinUser.displayName}
-                                    </h1>
-                                    {/* <p> pic : <img src={loggedinUser.photoURL} alt="" /> </p> */}
-                                </div>
-                            }
+
+                                    </div>
+                                }
+                                {
+                                    loggedinUser && <div>
+                                        <h1 className='underline p-2 rounded-lg font-bold flex items-center '>
+                                            {/* <span> <img src={loggedinUser.photoURL} alt="" /></span> */}
+                                            <p><img className='w-3/6 rounded-full' src={loggedinUser.photoURL} alt="" /></p>
+
+                                            {loggedinUser.displayName}
+                                        </h1>
+                                        {/* <p> pic : <img src={loggedinUser.photoURL} alt="" /> </p> */}
+                                    </div>
+                                }
+                            </div>
 
                         </ul>
                     </div>
                 </div>
                 {/* Page content here */}
-                Content
+                
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>

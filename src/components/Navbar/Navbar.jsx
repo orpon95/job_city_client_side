@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { authContext } from '../../AuthProvider/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut, googlesign } = useContext(authContext)
+    const [loggedinUser, setLoggedInUser] = useState('')
+    console.log(user);
+    // logout
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                setLoggedInUser('')
+
+            })
+            .catch(err => console.log(err))
+    }
+
+    // googlesign
+    const handleGoogle = () => {
+        googlesign()
+            .then(result => {
+                setLoggedInUser(result.user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+
+
+
+    }
     return (
         <div className="drawer">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -25,9 +54,41 @@ const Navbar = () => {
                             <NavLink to={"/"} > <button className='underline'> Home</button></NavLink>
                             <NavLink to={"addJob"} > <button className='underline'>Add job</button></NavLink>
                             <NavLink to={"myPostedJob"} > <button className='underline'> My Posted job</button></NavLink>
-                            <NavLink  to={"myBids"} > <button className='underline'> My Bids</button></NavLink>
-                            <NavLink   to={"myBidsRequest"} > <button className='underline'> My Bids request</button></NavLink>
+                            <NavLink to={"myBids"} > <button className='underline'> My Bids</button></NavLink>
+                            <NavLink to={"myBidsRequest"} > <button className='underline'> My Bids request</button></NavLink>
                             <NavLink to={"register"}> <button className='underline'> register</button></NavLink>
+                      
+                            {
+                                user ? <button onClick={handleSignOut} className='btn btn-ghost mt-2 underline'> sign out</button> :
+
+                                    // <NavLink to={"/Login"}> <button className='btn'> Log in</button></NavLink>
+                                    <NavLink to={"/Login"}><button className='btn btn-ghost underline'> Log in</button></NavLink>
+
+
+                            }
+                            <button className='btn btn-ghost underline' onClick={handleGoogle}>Sign in with google</button>
+                            {
+                                user && <div className='flex items-center gap-3'>
+                                    <h1 className='underline p-2 rounded-lg font-bold'>
+                                        {user?.displayName}
+                                    </h1>
+                                    <p><img className='w-3/6 h-[40px] rounded-full' src={user?.photoURL} alt="" /></p>
+
+
+                                </div>
+                            }
+                            {
+                                loggedinUser && <div>
+                                    <h1 className='underline p-2 rounded-lg font-bold flex items-center '>
+                                        {/* <span> <img src={loggedinUser.photoURL} alt="" /></span> */}
+                                        <p><img className='w-3/6 rounded-full' src={loggedinUser.photoURL} alt="" /></p>
+
+                                        {loggedinUser.displayName}
+                                    </h1>
+                                    {/* <p> pic : <img src={loggedinUser.photoURL} alt="" /> </p> */}
+                                </div>
+                            }
+
                         </ul>
                     </div>
                 </div>
@@ -44,6 +105,38 @@ const Navbar = () => {
                     <NavLink> <button className='underline'> My Bids</button></NavLink>
                     <NavLink> <button className='underline'> My Bids request</button></NavLink>
                     <NavLink> <button className='underline'> register</button></NavLink>
+
+                    {
+                        user ? <button onClick={handleSignOut} className='btn btn-ghost mt-2 underline'> sign out</button> :
+
+                            // <NavLink to={"/Login"}> <button className='btn'> Log in</button></NavLink>
+                            <NavLink to={"/Login"}><button className='btn btn-ghost underline'> Log in</button></NavLink>
+
+
+                    }
+                    <button className='btn btn-ghost underline' onClick={handleGoogle}>Sign in with google</button>
+                    {
+                        user && <div className='flex items-center gap-3'>
+                            <h1 className='underline p-2 rounded-lg font-bold'>
+                                {user?.displayName}
+                            </h1>
+                            <p><img className='w-3/6 h-[40px] rounded-full' src={user?.photoURL} alt="" /></p>
+
+
+                        </div>
+                    }
+                    {
+                        loggedinUser && <div>
+                            <h1 className='underline p-2 rounded-lg font-bold flex items-center '>
+                                {/* <span> <img src={loggedinUser.photoURL} alt="" /></span> */}
+                                <p><img className='w-3/6 rounded-full' src={loggedinUser.photoURL} alt="" /></p>
+
+                                {loggedinUser.displayName}
+                            </h1>
+                            {/* <p> pic : <img src={loggedinUser.photoURL} alt="" /> </p> */}
+                        </div>
+                    }
+
                 </ul>
             </div>
         </div>

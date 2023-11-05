@@ -6,7 +6,7 @@ const Navbar = () => {
 
     const { user, logOut, googlesign } = useContext(authContext)
     const [loggedinUser, setLoggedInUser] = useState('')
-    console.log(user);
+    // console.log(user);
     // logout
     const handleSignOut = () => {
         logOut()

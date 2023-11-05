@@ -81,17 +81,17 @@ const AddJob = () => {
 
 
                     >
-                        <option value="phone">junoir web developer</option>
-                        <option value="computer">senior web developer</option>
-                        <option value="computer">junior graphics designer</option>
-                        <option value="computer"> it manager</option>
-                        <option value="computer"> assistant marketing manager</option>
-                        <option value="computer"> it assistant</option>
-                        <option value="computer">senior graphics designer</option>
-                        <option value="computer">visual designer</option>
-                        <option value="computer">brand marketer</option>
-                        <option value="computer">social media analysist</option>
-                        <option value="computer">ui\ux designer</option>
+                        <option className='bg-red-400' value="junoir web developer">junoir web developer</option>
+                        <option value="senior web developer">senior web developer</option>
+                        <option value="junior graphics designer">junior graphics designer</option>
+                        <option value=" it manager"> it manager</option>
+                        <option value="assistant marketing manager"> assistant marketing manager</option>
+                        <option value="it assistant"> it assistant</option>
+                        <option value="senior graphics designer">senior graphics designer</option>
+                        <option value="visual designer">visual designer</option>
+                        <option value="brand marketer">brand marketer</option>
+                        <option value="social media analysist">social media analysist</option>
+                        <option value="ui\ux designer">ui\ux designer</option>
 
                     </select><br />
                 </div>
@@ -112,9 +112,9 @@ const AddJob = () => {
 
 
                     >
-                        <option value="Apple">web development</option>
-                        <option value="Google">digital marketing</option>
-                        <option value="Xiaomi">graphics design</option>
+                        <option value="web development">web development</option>
+                        <option value="digital marketing">digital marketing</option>
+                        <option value="graphics design">graphics design</option>
 
                     </select><br />
                 </div>

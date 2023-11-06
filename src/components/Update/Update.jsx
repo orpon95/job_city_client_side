@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import UseAlladdedjobs from '../../Hooks/UseAlladdedjobs';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 const Update = () => {
@@ -53,23 +55,45 @@ const Update = () => {
 
 
     // handeler for update
-    const handleUpdate = (e)=>{
+    const handleUpdate = (e) => {
         e.preventDefault();
         const form = e.target
-        const email = form?.email?.value ;
-        const job_title = form?.job_title?.value ;
+        const email = form?.email?.value;
+        const job_title = form?.job_title?.value;
         const deadline = form?.deadline?.value;
         const categories = form?.categories?.value;
         const min_price = form?.min_price?.value || "not given";
         const max_price = form?.max_price?.value || "not given";
         const short_description = form?.short_description?.value || "not given";
-        
+
 
         // console.log(image,name,brandName,type,price,short_description,rating_2);
         const updatedData = {
             email, job_title, deadline, categories, min_price, max_price, short_description
         }
         console.log(updatedData);
+
+        axios.put(`http://localhost:5000/api/v1/employ/allJobsUpdate/${_id}`, updatedData)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'success!',
+                        text: 'product updated successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+                else {
+                    Swal.fire({
+                        title: 'error!',
+                        text: 'something wrong ,pls try again',
+                        icon: 'error',
+                        confirmButtonText: 'Cool'
+                    })
+
+
+                }
+            })
     }
 
 
@@ -77,13 +101,13 @@ const Update = () => {
 
     return (
         <div className='my-11'>
-            <form onSubmit={handleUpdate}  className=' p-5 shadow-2xl space-y-6 border-2 border-cyan-300 rounded-2xl w-[70%] mx-auto' action="">
+            <form onSubmit={handleUpdate} className=' p-5 shadow-2xl space-y-6 border-2 border-cyan-300 rounded-2xl w-[70%] mx-auto' action="">
 
 
                 {/* email */}
                 <div className='text-center'>
                     <label htmlFor="deadline" className='text-xl font-bold'>email</label>
-                    <input type="email" defaultValue={email}   readOnly required name='email' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                    <input type="email" defaultValue={email} readOnly required name='email' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
                 </div>
                 {/* title of job */}
                 <div className='text-center'>
@@ -114,7 +138,7 @@ const Update = () => {
                 {/* deadline */}
                 <div className='text-center'>
                     <label htmlFor="deadline" className='text-xl font-bold'>deadline</label>
-                    <input  type="date" defaultValue={deadline} required name='deadline' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                    <input type="date" defaultValue={deadline} required name='deadline' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
                 </div>
 
                 {/* job categories */}

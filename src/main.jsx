@@ -47,6 +47,7 @@ const router = createBrowserRouter([
       {
         path: "myBids",
         element: <MyBids></MyBids>,
+        loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
       },
       {
         path: "myBidsRequest",

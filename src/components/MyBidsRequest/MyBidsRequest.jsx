@@ -1,10 +1,12 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import MyBidRequestRow from '../MyBidRequestRow/MyBidRequestRow';
+import UseBiddedData from '../../Hooks/UseBiddedData';
 
 const MyBidsRequest = () => {
-    const bidRequestData = useLoaderData()
-    console.log(bidRequestData);
+    // const bidRequestData = useLoaderData()
+    // console.log(bidRequestData);
+    const {data:bidRequestData,isLoading,isFetching,refetch} = UseBiddedData()
 
     return (
         <div>
@@ -25,7 +27,7 @@ const MyBidsRequest = () => {
                     <tbody>
                         {
                             // bidRequestData.map(data => <MyBidRequestRow key={data._id} data={data} > </MyBidRequestRow> )
-                            bidRequestData.map(data => <MyBidRequestRow key={data._id} data={data} >  </MyBidRequestRow>)
+                            bidRequestData?.map(data => <MyBidRequestRow key={data._id} data={data} >  </MyBidRequestRow>)
                         }
 
 

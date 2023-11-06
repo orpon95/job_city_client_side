@@ -1,14 +1,59 @@
-import React, { useContext } from 'react';
-import { authContext } from '../../AuthProvider/AuthProvider';
-import Swal from 'sweetalert2';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import UseAlladdedjobs from '../../Hooks/UseAlladdedjobs';
+import { useParams } from 'react-router-dom';
 
-const AddJob = () => {
-    const { user } = useContext(authContext)
-    console.log(user?.email);
 
-    // handle function
-    const handleAdd = e => {
+const Update = () => {
+    const { data, isLoading, isFetching, refetch } = UseAlladdedjobs()
+    const [email, setemail] = useState(null)
+    const [categories, setcategories] = useState(null)
+    const [deadline, setdeadline] = useState(null)
+    const [job_title, setjob_title] = useState(null)
+    const [max_price, setmax_price] = useState(null)
+    const [min_price, setmin_price] = useState(null)
+    const [short_description, setshort_description] = useState(null)
+    const [_id, set_id] = useState(null)
+
+    // console.log(findedData);
+    // const { categories, deadline, job_title, max_price, min_price, short_description, _id } = data
+    const { id } = useParams()
+    //    console.log(data);
+
+    //    const finData = data?.find(aData => aData._id == id)
+    //   const findData = data?.find(aData=> aData._id === id)
+    //    console.log("find data", findData);
+    //    const {email, categories, deadline, job_title, max_price, min_price, short_description, _id } = findData
+    //    const { email,categories} = findData
+
+    const updateData = data?.find(aData => aData._id == id)
+    console.log(updateData);
+    // const { categories} = updateData;
+    // const{email, categories, deadline, job_title, max_price, min_price, short_description, _id } = updateData;
+
+    useEffect(() => {
+        if (updateData) {
+            const { email, categories, deadline, job_title, max_price, min_price, short_description, _id } = updateData;
+            //    console.log(email);
+            setemail(email)
+            setcategories(categories)
+            setdeadline(deadline)
+            setmax_price(max_price)
+            setjob_title(job_title)
+            setmin_price(min_price)
+            setshort_description(short_description)
+            set_id(_id)
+            //    setfindedData({email, categories, deadline, job_title, max_price, min_price, short_description, _id })
+        }
+        else {
+            console.log("sry no data");
+        }
+
+
+    }, [updateData])
+
+
+    // handeler for update
+    const handleUpdate = (e)=>{
         e.preventDefault();
         const form = e.target
         const email = form?.email?.value ;
@@ -21,54 +66,24 @@ const AddJob = () => {
         
 
         // console.log(image,name,brandName,type,price,short_description,rating_2);
-        const addedJobs = {
+        const updatedData = {
             email, job_title, deadline, categories, min_price, max_price, short_description
         }
-        console.log(addedJobs);
-        // axios post api
-        // fetch("https://brand-shop-844bnpgxw-yeasins-projects-c520e666.vercel.app/add", {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify(newProduct)
-        // })
-        axios.post("http://localhost:5000/api/v1/addJobs",addedJobs)
-            
-            .then(data => {
-                console.log(data.data)
-                if (data.data.insertedId) {
-                    Swal.fire({
-                        title: 'success!',
-                        text: 'product added successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
-                }
-                else {
-                    Swal.fire({
-                        title: 'error!',
-                        text: 'something wrong ,pls try again',
-                        icon: 'error',
-                        confirmButtonText: 'Cool'
-                    })
-
-
-                }
-
-            })
-
-
+        console.log(updatedData);
     }
+
+
+
+
     return (
         <div className='my-11'>
-            <form onSubmit={handleAdd} className=' p-5 shadow-2xl space-y-6 border-2 border-cyan-300 rounded-2xl w-[70%] mx-auto' action="">
+            <form onSubmit={handleUpdate}  className=' p-5 shadow-2xl space-y-6 border-2 border-cyan-300 rounded-2xl w-[70%] mx-auto' action="">
 
 
                 {/* email */}
                 <div className='text-center'>
                     <label htmlFor="deadline" className='text-xl font-bold'>email</label>
-                    <input type="email" defaultValue={user?.email} readOnly required name='email' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                    <input type="email" defaultValue={email}   readOnly required name='email' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
                 </div>
                 {/* title of job */}
                 <div className='text-center'>
@@ -78,6 +93,7 @@ const AddJob = () => {
 
                         name="job_title"
                         required
+                        defaultValue={job_title}
 
 
                     >
@@ -98,7 +114,7 @@ const AddJob = () => {
                 {/* deadline */}
                 <div className='text-center'>
                     <label htmlFor="deadline" className='text-xl font-bold'>deadline</label>
-                    <input type="date"   required name='deadline' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                    <input  type="date" defaultValue={deadline} required name='deadline' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
                 </div>
 
                 {/* job categories */}
@@ -109,6 +125,7 @@ const AddJob = () => {
 
                         name="categories"
                         required
+                        defaultValue={categories}
 
 
                     >
@@ -118,35 +135,39 @@ const AddJob = () => {
 
                     </select><br />
                 </div>
-                
+
 
                 {/* min price */}
                 <div className='text-center'>
                     <label htmlFor="min-price" className='text-xl font-bold'>min price</label>
-                    <input type="text" placeholder="min_price" required name='min_price' className="border-2 bg-transparent shadow-2xl  border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                    <input type="text" defaultValue={min_price} placeholder="min_price" required name='min_price' className="border-2 bg-transparent shadow-2xl  border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
                 </div>
                 {/* max price */}
                 <div className='text-center'>
                     <label htmlFor="max-price" className='text-xl font-bold'>max price</label>
-                    <input type="text" placeholder="max-price" required name='max_price' className="border-2 bg-transparent shadow-2xl  border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                    <input defaultValue={max_price} type="text" placeholder="max-price" required name='max_price' className="border-2 bg-transparent shadow-2xl  border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
                 </div>
                 {/* short des */}
                 <div className='text-center'>
                     <label htmlFor="short description" className='text-xl font-bold'>short description</label>
-                    <input type="text" required placeholder="short description" name='short_description' className="border-2 bg-transparent shadow-2xl  border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                    <input defaultValue={short_description} type="text" required placeholder="short description" name='short_description' className="border-2 bg-transparent shadow-2xl  border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
 
                 </div>
 
-               
+
 
                 <div className='text-center'>
-                    <button type='submit' className='btn btn-ghost border-2  shadow-2xl  border-cyan-300'  > add </button>
+                    <button type='submit' className='btn btn-ghost border-2  shadow-2xl  border-cyan-300'  > Update </button>
                 </div>
 
             </form>
 
         </div>
+        // <div></div>
+
+
+
     );
 };
 
-export default AddJob;
+export default Update;

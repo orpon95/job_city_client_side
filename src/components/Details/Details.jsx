@@ -14,7 +14,7 @@ const Details = () => {
     console.log(id);
 
 
-    const singleData = alldata.find(Data => Data?._id === id)
+    const singleData = alldata?.find(Data => Data?._id === id)
     console.log(singleData);
     const { categories, deadline, job_title, max_price, min_price, short_description, _id, email } = singleData
 

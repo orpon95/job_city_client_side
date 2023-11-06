@@ -19,6 +19,9 @@ import AuthProvider from './AuthProvider/AuthProvider.jsx';
 import Login from './components/Login/Login.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Details from './components/Details/Details.jsx';
+import Update from './components/Update/Update.jsx';
+import Delete from './components/Delete/Delete.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 const queryClient = new QueryClient()
 
 
@@ -47,12 +50,12 @@ const router = createBrowserRouter([
       {
         path: "myBids",
         element: <MyBids></MyBids>,
-        loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
+        // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
       },
       {
         path: "myBidsRequest",
         element: <MyBidsRequest></MyBidsRequest>,
-        loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
+        // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
       },
       {
         path: "register",
@@ -66,6 +69,16 @@ const router = createBrowserRouter([
         path: "details/:id",
         element: <Details></Details>,
         loader: ()=>fetch("http://localhost:5000/api/v1/getAddedJobsData")
+      },
+      {
+        path: "update/:id",
+        element: <PrivateRoute><Update></Update></PrivateRoute> ,
+        
+      },
+      {
+        path: "delete/:id",
+        element: <Delete></Delete>,
+        
       },
     ]
   },

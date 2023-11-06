@@ -1,10 +1,17 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import MybidsTableRow from '../MybidsTableRow/MybidsTableRow';
+import UseBiddedData from '../../Hooks/UseBiddedData';
 
 const MyBids = () => {
-    const allBiddedJobs = useLoaderData()
-    console.log(allBiddedJobs);
+    // const allBiddedJobs = useLoaderData()
+    // console.log(allBiddedJobs);
+    const {data:AllData,isLoading,isFetching,refetch} = UseBiddedData()
+    // console.log("refetch is",refetch,"isloading is", isLoading);
+    // console.log(refetch);
+
+
+
     return (
         <div>
             <div className="overflow-x-auto">
@@ -16,12 +23,13 @@ const MyBids = () => {
                             <th>email</th>
                             <th>deadline</th>
                             <th>status</th>
-                            <th> <button className='btn-ghost'> complete</button> </th>
+                            <th>complete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            allBiddedJobs.map(data => <MybidsTableRow key={data._id} data={data} ></MybidsTableRow> )
+                            // data.map(data => <MybidsTableRow key={data._id} data={data} ></MybidsTableRow> )
+                            AllData?.map(data => <MybidsTableRow key={data._id} data={data} reFetch={refetch} ></MybidsTableRow> )
                         }
                        
 

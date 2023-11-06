@@ -99,16 +99,16 @@ const Navbar = () => {
                 {/* Page content here */}
                 
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side z-20">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 space-y-5 text-lg text-blue-400">
                     {/* Sidebar content here */}
-                    <NavLink to={"/"} > <button className='underline'> Home</button></NavLink>
-                    <NavLink to={"/addJob"} > <button className='underline'>Add job</button></NavLink>
-                    <NavLink> <button className='underline'> My Posted job</button></NavLink>
-                    <NavLink> <button className='underline'> My Bids</button></NavLink>
-                    <NavLink> <button className='underline'> My Bids request</button></NavLink>
-                    <NavLink> <button className='underline'> register</button></NavLink>
+                    <NavLink  to={"/"}  > <button className='underline'> Home</button></NavLink>
+                    <NavLink to={"addJob"} > <button className='underline'>Add job</button></NavLink>
+                    <NavLink to={"myPostedJob"}> <button className='underline'> My Posted job</button></NavLink>
+                    <NavLink to={"myBids"}> <button className='underline'> My Bids</button></NavLink>
+                    <NavLink  to={"myBidsRequest"} > <button className='underline'> My Bids request</button></NavLink>
+                    <NavLink to={"register"}> <button className='underline'> register</button></NavLink>
 
                     {
                         user ? <button onClick={handleSignOut} className='btn btn-ghost mt-2 underline'> sign out</button> :

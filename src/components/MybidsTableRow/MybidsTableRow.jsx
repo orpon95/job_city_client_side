@@ -22,7 +22,7 @@ const MybidsTableRow = ({ data,refetch }) => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     });
-                    // refetch();
+                    refetch();
                    
                 }
                 else {
@@ -97,14 +97,14 @@ const MybidsTableRow = ({ data,refetch }) => {
 
             <td>
                 {
-                    status !== "accepted" ?
+                    status == "accepted" ?
                     // complete_status== "completed"  ?
-                        <button disabled className='btn bg-red-500 text-yellow-300'> complete</button> :
+                        <button onClick={() => handleComplete(_id)}  className='btn bg-red-500 text-yellow-300'> complete</button> :
                         // complete_status == "completed" ?
                         // <button disabled className='btn-warning text-yellow-300'> complete</button> :
 
 
-                        <button onClick={() => handleComplete(_id)} className='btn bg-green-900 text-red-500'> complete</button>
+                        <button disabled  className='btn bg-green-900 text-red-500'> complete</button>
                 }
 
 

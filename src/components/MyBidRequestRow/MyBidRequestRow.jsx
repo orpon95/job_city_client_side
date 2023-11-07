@@ -2,8 +2,9 @@
 import axios from 'axios';
 import React from 'react';
 import Swal from 'sweetalert2';
+import Progressbar from '../Progressbar/Progressbar';
 
-const MyBidRequestRow = ({ data }) => {
+const MyBidRequestRow = ({ data,refetch }) => {
     const { job_title, deadline, price, bidder_email, Buyer_email, _id, status } = data
     // reject button handler
     const handleReject = (id) => {
@@ -18,7 +19,7 @@ const MyBidRequestRow = ({ data }) => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     });
-                    // refetch();
+                    refetch();
                    
                 }
                 else {
@@ -47,7 +48,7 @@ const MyBidRequestRow = ({ data }) => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     });
-                    // refetch();
+                    refetch();
                    
                 }
                 else {
@@ -71,15 +72,39 @@ const MyBidRequestRow = ({ data }) => {
             <td> {price} </td>
             <td> 
                 {
-                    status == "rejected" ? "rejected" : "pending"
+                    status == "rejected" ? "rejected" : 
+                    status == "accepted" ? <h1> <Progressbar></Progressbar> </h1> : "pending"
                 }
                 
                 
                 
                 
                 </td>
-            <th> <button onClick={() => handleAccept(_id)} className='btn-ghost'> accept</button> </th>
-            <th> <button onClick={() => handleReject(_id)} className='btn-ghost'> reject</button> </th>
+
+
+            
+                    {
+                        status=="rejected"?
+                        <th> <button disabled onClick={() => handleAccept(_id)} className='btn bg-green-400'> accept</button> </th>:
+                        <th> <button  onClick={() => handleAccept(_id)} className='btn bg-green-400'> accept</button> </th>
+
+
+                    }
+                    {
+                        status=="rejected"?
+                        <th> <button disabled onClick={() => handleReject(_id)} className='btn bg-green-400'> reject</button> </th>:
+                        <th> <button  onClick={() => handleReject(_id)} className='btn bg-green-400'> reject</button> </th>
+                    }
+                     
+                      
+                    
+
+
+
+
+            
+            
+            
         </tr>
     );
 };

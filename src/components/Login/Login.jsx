@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Login = () => {
     const nevigate = useNavigate()
@@ -26,6 +27,18 @@ const Login = () => {
         // setError("")
         signin(email, password)
             .then(result => {
+                const loggeduser = result.user
+                const user = { email }
+                axios.post("http://localhost:5000/api/v1/jwt", user, {
+                    withCredentials: true
+                })
+                    .then(res =>  {
+                        console.log(res.data)
+                        if (res.data.success) {
+                            nevigate(location?.state ? location.state : "/")
+                        }
+                    }
+                    )
 
                 console.log("loggen in user", result.user)
                 Swal.fire({
@@ -36,7 +49,7 @@ const Login = () => {
                     timer: 1500
                 })
 
-                nevigate(location?.state ? location.state : "/")
+                // nevigate(location?.state ? location.state : "/")
 
             })
             .catch(err => {

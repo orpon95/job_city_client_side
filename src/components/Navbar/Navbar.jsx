@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
+import axios from 'axios';
 
 const Navbar = () => {
+    const nevigate = useNavigate()
 
     const { user, logOut, googlesign } = useContext(authContext)
     const [loggedinUser, setLoggedInUser] = useState('')
+    const email = loggedinUser.email
+    // console.log(email);
     // console.log(user);
     // logout
     const handleSignOut = () => {
@@ -22,6 +26,17 @@ const Navbar = () => {
         googlesign()
             .then(result => {
                 setLoggedInUser(result.user)
+                const loggeduser = result.user
+                const user = {email}
+                axios.post("http://localhost:5000/api/v1/jwt",user,{
+                    withCredentials:true
+                })
+                .then(res=> {
+                    console.log(res.data)
+                    if(res.data.success){
+                        nevigate(location?.state ? location.state : "/")
+                    }
+                })
             })
             .catch(err => {
                 console.log(err)

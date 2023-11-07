@@ -13,7 +13,7 @@ const Home = () => {
     // console.log(jobdata);
     const { user } = useContext(authContext)
     // console.log(activeTab);
-    const url = `http://localhost:5000/api/v1/getAddedJobsData`
+    const url = `http://localhost:5000/api/v2/getAddedJobsData`
 
     useEffect(() => {
         fetch(url)

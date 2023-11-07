@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
@@ -15,13 +15,16 @@ import MypostedJob from './components/MypostedJob/MypostedJob.jsx';
 import MyBids from './components/MyBids/MyBids.jsx';
 import MyBidsRequest from './components/MyBidsRequest/MyBidsRequest.jsx';
 import Register from './components/Register/Register.jsx';
-import AuthProvider from './AuthProvider/AuthProvider.jsx';
+import AuthProvider, { authContext } from './AuthProvider/AuthProvider.jsx';
 import Login from './components/Login/Login.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Details from './components/Details/Details.jsx';
 import Update from './components/Update/Update.jsx';
 import Delete from './components/Delete/Delete.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
+import axios from 'axios';
+import { useContext } from 'react';
+
 const queryClient = new QueryClient()
 
 
@@ -41,21 +44,24 @@ const router = createBrowserRouter([
       },
       {
         path: "addJob",
-        element: <AddJob></AddJob>,
+        element: <PrivateRoute><AddJob></AddJob></PrivateRoute> ,
       },
       {
         path: "myPostedJob",
-        element: <MypostedJob></MypostedJob>,
-        loader: ()=> fetch("http://localhost:5000/api/v1/getAddedJobsData")
+        element: <PrivateRoute> <MypostedJob></MypostedJob></PrivateRoute>,
+        // loader: ()=> fetch("http://localhost:5000/api/v1/getAddedJobsData")
+        loader: ()=> axios.get("http://localhost:5000/api/v1/getAddedJobsData",{
+          withCredentials:true
+        })
       },
       {
         path: "myBids",
-        element: <MyBids></MyBids>,
+        element: <PrivateRoute><MyBids></MyBids></PrivateRoute> ,
         // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
       },
       {
         path: "myBidsRequest",
-        element: <MyBidsRequest></MyBidsRequest>,
+        element: <PrivateRoute><MyBidsRequest></MyBidsRequest></PrivateRoute> ,
         // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
       },
       {
@@ -68,7 +74,7 @@ const router = createBrowserRouter([
       },
       {
         path: "details/:id",
-        element: <Details></Details>,
+        element: <PrivateRoute><Details></Details></PrivateRoute> ,
         loader: ()=>fetch("http://localhost:5000/api/v1/getAddedJobsData")
       },
       {

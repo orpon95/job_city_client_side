@@ -29,7 +29,7 @@ const MyBids = () => {
                     <tbody>
                         {
                             // data.map(data => <MybidsTableRow key={data._id} data={data} ></MybidsTableRow> )
-                            AllData?.map(data => <MybidsTableRow key={data._id} data={data} reFetch={refetch} ></MybidsTableRow> )
+                            AllData?.map(data => <MybidsTableRow key={data._id} data={data} refetch={refetch} ></MybidsTableRow> )
                         }
                        
 

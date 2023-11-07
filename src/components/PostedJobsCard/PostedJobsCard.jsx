@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const PostedJobsCard = ({ cartdata,setLoadedUsers,loadedUsers }) => {
+    const [errors, setError] = useState()
     console.log(cartdata);
     const { email, categories, deadline, job_title, max_price, min_price, short_description, _id } = cartdata
 
@@ -43,6 +44,16 @@ const PostedJobsCard = ({ cartdata,setLoadedUsers,loadedUsers }) => {
                             setLoadedUsers(remainingUsers)
 
                         }
+                    })
+                    .catch(err => {
+                        setError(err.message)
+                        Swal.fire({
+                            title: `${errors}`,
+                            text: '',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        })
+        
                     })
 
 

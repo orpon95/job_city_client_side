@@ -3,6 +3,7 @@ import { authContext } from '../../AuthProvider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const nevigate = useNavigate()
@@ -82,6 +83,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title> Login</title>
+            </Helmet>
 
 
             <h1 className="text-5xl font-bold text-center my-5">Log In here!!!</h1>

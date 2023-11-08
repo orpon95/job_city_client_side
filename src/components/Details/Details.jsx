@@ -3,6 +3,7 @@ import { Link, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Details = () => {
     const { user } = useContext(authContext)
@@ -73,7 +74,10 @@ const Details = () => {
     }
     return (
         <div>
-            <h1>details</h1>
+            <Helmet>
+                <title> Details</title>
+            </Helmet>
+            <h1 className='text-4xl font-bold my-8 text-center'> Details</h1>
             <div className="card   shadow-xl">
                 {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
                 <div className="card-body">

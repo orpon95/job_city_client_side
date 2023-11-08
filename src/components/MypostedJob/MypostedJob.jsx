@@ -5,6 +5,7 @@ import PostedJobsCard from '../PostedJobsCard/PostedJobsCard';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { authContext } from '../../AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const MypostedJob = () => {
     const {user} = useContext(authContext)
@@ -56,6 +57,9 @@ const MypostedJob = () => {
 
     return (
         <div className='h-screen'>
+            <Helmet>
+                <title> MyPostedJobs</title>
+            </Helmet>
             <h1 className='text-2xl font-extrabold my-9 text-center' > All posted Jobs </h1>
 
             <div className='grid place-items-center border-2 border-red-400 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5' >

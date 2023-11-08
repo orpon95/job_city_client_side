@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const [error, setError] = useState("")
@@ -63,6 +64,9 @@ const Register = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title> register</title>
+            </Helmet>
             <h1 className="text-5xl font-bold text-center my-5">Register Here!!!</h1>
 
             <div className="hero min-h-screen ">

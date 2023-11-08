@@ -6,6 +6,7 @@ import JobCard from '../JobCard/JobCard';
 import Banner from '../Banner/Banner';
 import AboutUs from './AboutUs/AboutUs';
 import OurPartner from './OurPartner/OurPartner';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
 
@@ -36,6 +37,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title> Home</title>
+            </Helmet>
             <Banner></Banner>
 
             <h1 className='text-4xl font-bold my-8 text-center'> Jobs Categories</h1>

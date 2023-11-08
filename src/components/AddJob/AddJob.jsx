@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const AddJob = () => {
     const { user } = useContext(authContext)
@@ -62,6 +63,9 @@ const AddJob = () => {
     }
     return (
         <div className='my-11'>
+            <Helmet>
+                <title> AddJobs</title>
+            </Helmet>
             <form onSubmit={handleAdd} className=' p-5 shadow-2xl space-y-6 border-2 border-cyan-300 rounded-2xl w-[70%] mx-auto' action="">
 
 

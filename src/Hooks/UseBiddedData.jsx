@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { authContext } from '../AuthProvider/AuthProvider';
 
 const UseBiddedData = () => {
     const {user} = useContext(authContext)
+    // const [bidData, setBidData] =useState([])
+    
 
     const {data,isLoading,isFetching,refetch} = useQuery({
         queryKey: ["biddedDatasss"],
@@ -14,14 +16,19 @@ const UseBiddedData = () => {
           })
             return await res.data
         }
+      
 
 
     })
     console.log(refetch);
+    // setBidData(data)
+
 
 
 
     return {data , isLoading, isFetching,refetch}
 };
+
+
 
 export default UseBiddedData;

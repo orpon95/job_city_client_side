@@ -3,6 +3,7 @@ import UseAlladdedjobs from '../../Hooks/UseAlladdedjobs';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 const Update = () => {
@@ -101,6 +102,9 @@ const Update = () => {
 
     return (
         <div className='my-11'>
+            <Helmet>
+                <title> Update</title>
+            </Helmet>
             <form onSubmit={handleUpdate} className=' p-5 shadow-2xl space-y-6 border-2 border-cyan-300 rounded-2xl w-[70%] mx-auto' action="">
 
 

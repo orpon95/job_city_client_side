@@ -24,6 +24,7 @@ import Delete from './components/Delete/Delete.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import axios from 'axios';
 import Error from './components/Error/Error.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 // import { useContext } from 'react';
 
 const queryClient = new QueryClient()
@@ -34,36 +35,33 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <Error></Error> ,
+    errorElement: <Error></Error>,
     children: [
       {
         index: true,
         element: <Home></Home>,
       },
+      
       {
         path: "addJob",
-        element: <AddJob></AddJob>,
-      },
-      {
-        path: "addJob",
-        element: <PrivateRoute><AddJob></AddJob></PrivateRoute> ,
+        element: <PrivateRoute><AddJob></AddJob></PrivateRoute>,
       },
       {
         path: "myPostedJob",
         element: <PrivateRoute> <MypostedJob></MypostedJob></PrivateRoute>,
         // loader: ()=> fetch("http://localhost:5000/api/v1/getAddedJobsData")
-        loader: ()=> axios.get("http://localhost:5000/api/v1/getAddedJobsData",{
-          withCredentials:true
+        loader: () => axios.get("http://localhost:5000/api/v1/getAddedJobsData", {
+          withCredentials: true
         })
       },
       {
         path: "myBids",
-        element: <PrivateRoute><MyBids></MyBids></PrivateRoute> ,
+        element: <PrivateRoute><MyBids></MyBids></PrivateRoute>,
         // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
       },
       {
         path: "myBidsRequest",
-        element: <PrivateRoute><MyBidsRequest></MyBidsRequest></PrivateRoute> ,
+        element: <PrivateRoute><MyBidsRequest></MyBidsRequest></PrivateRoute>,
         // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
       },
       {
@@ -76,20 +74,20 @@ const router = createBrowserRouter([
       },
       {
         path: "details/:id",
-        element: <PrivateRoute><Details></Details></PrivateRoute> ,
-        loader: ()=>fetch("http://localhost:5000/api/v2/getAddedJobsData",{
-          withCredentials:true
+        element: <PrivateRoute><Details></Details></PrivateRoute>,
+        loader: () => fetch("http://localhost:5000/api/v2/getAddedJobsData", {
+          withCredentials: true
         })
       },
       {
         path: "update/:id",
-        element: <PrivateRoute><Update></Update></PrivateRoute> ,
-        
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
+
       },
       {
         path: "delete/:id",
         element: <Delete></Delete>,
-        
+
       },
     ]
   },
@@ -98,14 +96,19 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <RouterProvider router={router} />
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RouterProvider router={router} />
 
-      </AuthProvider>
+        </AuthProvider>
 
 
-    </QueryClientProvider>
+      </QueryClientProvider>
+
+
+    </HelmetProvider>
+
 
 
   </React.StrictMode>,

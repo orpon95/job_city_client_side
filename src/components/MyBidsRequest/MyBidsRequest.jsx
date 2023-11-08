@@ -6,6 +6,7 @@ import axios from 'axios';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import { data } from 'autoprefixer';
+import { Helmet } from 'react-helmet-async';
 
 const MyBidsRequest = () => {
     const { user } = useContext(authContext)
@@ -56,6 +57,9 @@ const MyBidsRequest = () => {
 
     return (
         <div className='h-screen'>
+            <Helmet>
+                <title> myBidsRequest</title>
+            </Helmet>
 
 
             < >

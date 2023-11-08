@@ -43,7 +43,7 @@ const Details = () => {
         // axios api
 
 
-        axios.post("http://localhost:5000/api/v1/employ/allBiddedJobs",biddedJobs)
+        axios.post("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/employ/allBiddedJobs",biddedJobs)
 
             .then(data => {
                 console.log(data.data)
@@ -78,18 +78,16 @@ const Details = () => {
                 <title> Details</title>
             </Helmet>
             <h1 className='text-4xl font-bold my-8 text-center'> Details</h1>
-            <div className="card   shadow-xl">
+            <div className="card   shadow-xl shadow-black my-6 py-6">
                 {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
-                <div className="card-body">
+                <div className="card-body shadow-xl text-center shadow-fuchsia-200 w[50%] mx-auto">
 
-                    <p>job-title: {job_title}</p>
+                    <p className='text-2xl font-bold'>job-title: <span className='text-lg font-medium'>{job_title}</span> </p>
 
-                    <h1>Price Range: {min_price} - {max_price}</h1>
-                    <h1> Description: {short_description}</h1>
-                    <h1>application deadline : {deadline} </h1>
-                    <div className="card-actions justify-center">
-                        <Link to={`/details/${_id}`} ><button className="btn btn-primary">Bid Now</button></Link>
-                    </div>
+                    <h1 className='text-2xl font-bold'>Price Range: <span className='text-lg font-medium'>{min_price} - {max_price}</span> </h1>
+                    <h1 className='text-2xl font-bold'> Description: <span className='text-lg font-medium'>{short_description}</span> </h1>
+                    <h1 className='text-2xl font-bold'>application deadline : <span className='text-lg font-medium'>{deadline}</span> </h1>
+                   
                 </div>
 
 

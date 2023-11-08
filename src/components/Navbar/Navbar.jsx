@@ -21,7 +21,7 @@ const Navbar = ({tData}) => {
                 const loggeduser = { email: user?.email }
 
                 // clear coki
-                axios.post("http://localhost:5000/api/v1/jwt/logout", loggeduser, {
+                axios.post("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/jwt/logout", loggeduser, {
                     withCredentials: true
                 })
                     .then(res => console.log(res.data))
@@ -38,7 +38,7 @@ const Navbar = ({tData}) => {
                 setLoggedInUser(result.user)
                 const loggeduser = result.user
                 const user = { email }
-                axios.post("http://localhost:5000/api/v1/jwt", user, {
+                axios.post("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/jwt", user, {
                     withCredentials: true
                 })
                     .then(res => {
@@ -79,7 +79,7 @@ const Navbar = ({tData}) => {
                     </div>
                     {/* logo image */}
                     <div className='w-[50px] h-[50px] rounded-full'>
-                        <img className='w-full rounded-[50%]' src="https://i.ibb.co/37JVmzJ/download-15.jpg" alt="" />
+                        <img className='w-full rounded-[50%]' src="https://i.ibb.co/PjDkYcs/png-transparent-career-development-job-application-for-employment-business-career-miscellaneous-trad.png" alt="" />
                     </div>
                     {/* title */}
                     <div className="flex-1  mx-2 font-poppins font-bold text-3xl  italic ">Job City</div>

@@ -15,8 +15,9 @@ const MyBids = () => {
 
     return (
         <div className='h-screen'>
-            <div className="overflow-x-auto">
-                <table className="table">
+            <h1 className='text-4xl font-bold my-8 text-center'> My Bids</h1>
+            <div className="overflow-x-auto  shadow-2xl rounded-lg shadow-fuchsia-200">
+                <table className="table shadow-2xl  rounded-lg">
                     {/* head */}
                     <thead>
                         <tr>

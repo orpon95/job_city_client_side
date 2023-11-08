@@ -47,7 +47,7 @@ const Navbar = () => {
 
     }
     return (
-        <div className="drawer">
+        <div className="drawer shadow-lg mb-6 rounded-lg shadow-black">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="  drawer-content flex flex-col">
                 {/* Navbar */}
@@ -62,7 +62,7 @@ const Navbar = () => {
                         <img className='w-full rounded-[50%]' src="https://i.ibb.co/37JVmzJ/download-15.jpg" alt="" />
                     </div>
                     {/* title */}
-                    <div className="flex-1 px-2 mx-2 font-poppins font-bold text-lg italic ">Job City</div>
+                    <div className="flex-1  mx-2 font-poppins font-bold text-3xl  italic ">Job City</div>
                     <div className="flex-none hidden lg:block">
                         <ul className="menu menu-horizontal flex flex-col gap-6 text-lg font-medium underline">
                             {/* Navbar menu content here */}

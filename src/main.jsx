@@ -23,6 +23,7 @@ import Update from './components/Update/Update.jsx';
 import Delete from './components/Delete/Delete.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import axios from 'axios';
+import Error from './components/Error/Error.jsx';
 // import { useContext } from 'react';
 
 const queryClient = new QueryClient()
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement:<h1>no data</h1>,
+    errorElement: <Error></Error> ,
     children: [
       {
         index: true,

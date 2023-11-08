@@ -18,7 +18,7 @@ const MyBidsRequest = () => {
     const { data: bidRequestData, isLoading, isFetching, refetch } = useQuery({
         queryKey: ["addealldData"],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/api/v3/employ/getAllBiddedJobs?email=${user.email}`, {
+            const res = await axios.get(`http://localhost:5000/api/v3/employ/getAllBiddedJobs?email=${user?.email}`, {
                 withCredentials: true
             })
             return await res?.data
@@ -58,10 +58,10 @@ const MyBidsRequest = () => {
         <div className='h-screen'>
 
 
-            <>
+            < >
                 {
-                    filterEmail ?
-                        <div className="overflow-x-auto  h-screen">
+                    filterEmail?.length >0 ?
+                        <div className="overflow-x-auto  h-screen shadow-2xl rounded-lg shadow-fuchsia-200">
                             <table className="table">
                                 {/* head */}
                                 <thead>
@@ -85,8 +85,9 @@ const MyBidsRequest = () => {
 
                                 </tbody>
                             </table>
-                        </div>:
-                        <p>sry ur r</p>
+                        </div>
+                        :
+                        <p className=' text-red-400 text-center font-extrabold text-5xl justify-center'> sorry You have not any data , Probably YOu have no bid request</p>
              }
 
             </>

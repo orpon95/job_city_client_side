@@ -19,7 +19,7 @@ const Navbar = () => {
                 const loggeduser = {email : user?.email}
 
                 // clear coki
-                axios.post("http://localhost:5000/api/v1/jwt/logout",loggeduser,{
+                axios.post("https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v1/jwt/logout",loggeduser,{
                     withCredentials:true
                 })
                 .then(res => console.log(res.data))
@@ -36,7 +36,7 @@ const Navbar = () => {
                 setLoggedInUser(result.user)
                 const loggeduser = result.user
                 const user = {email}
-                axios.post("http://localhost:5000/api/v1/jwt",user,{
+                axios.post("https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v1/jwt",user,{
                     withCredentials:true
                 })
                 .then(res=> {

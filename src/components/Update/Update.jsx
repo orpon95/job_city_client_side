@@ -73,7 +73,7 @@ const Update = () => {
         }
         console.log(updatedData);
 
-        axios.put(`http://localhost:5000/api/v1/employ/allJobsUpdate/${_id}`, updatedData)
+        axios.put(`https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v1/employ/allJobsUpdate/${_id}`, updatedData)
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({

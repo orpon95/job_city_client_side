@@ -18,7 +18,7 @@ const MyBidsRequest = () => {
     const { data: bidRequestData, isLoading, isFetching, refetch } = useQuery({
         queryKey: ["addealldData"],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/api/v3/employ/getAllBiddedJobs?email=${user?.email}`, {
+            const res = await axios.get(`https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v3/employ/getAllBiddedJobs?email=${user?.email}`, {
                 withCredentials: true
             })
             return await res?.data
@@ -32,7 +32,7 @@ const MyBidsRequest = () => {
     const { data: addedcollection } = useQuery({
         queryKey: ["fromAddedJobsCollection"],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/api/v4/employ/getAlladdedJobs?email=${user.email}`, {
+            const res = await axios.get(`https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v4/employ/getAlladdedJobs?email=${user.email}`, {
                 withCredentials: true
             })
             return await res?.data

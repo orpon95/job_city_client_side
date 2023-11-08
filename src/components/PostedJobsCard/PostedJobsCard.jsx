@@ -1,13 +1,47 @@
 /* eslint-disable react/prop-types */
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { authContext } from '../../AuthProvider/AuthProvider';
 
-const PostedJobsCard = ({ cartdata,setLoadedUsers,loadedUsers }) => {
+const PostedJobsCard = ({ cartdata, setLoadedUsers, loadedUsers }) => {
+    const { user } = useContext(authContext)
+    // console.log("buyer email",user.email );
     const [errors, setError] = useState()
-    console.log(cartdata);
+    // console.log(cartdata);
     const { email, categories, deadline, job_title, max_price, min_price, short_description, _id } = cartdata
+
+
+    // use query star
+    const { data:addedData, isLoading, isFetching, refetch } = useQuery({
+        queryKey: ["onlyFOremai"],
+        queryFn: async () => {
+            const res = await axios.get(`http://localhost:5000/api/v4/employ/getAlladdedJobs?email=${user.email}`, {
+                withCredentials: true
+            })
+            return await res?.data
+        }
+
+
+
+    })
+    // user query end
+    console.log("alldata", addedData);
+    const filtersData = addedData?.filter(data => data.email == user?.email)
+    console.log(filtersData);
+
+    // useEffect(() => {
+    //     const filtersData = bidRequestData?.filter(data => data?.bidder_email === user?.email)
+    //     console.log("filters data", filtersData);
+
+
+
+
+
+    // }, [addedData, user.email])
+
 
 
 
@@ -53,30 +87,10 @@ const PostedJobsCard = ({ cartdata,setLoadedUsers,loadedUsers }) => {
                             icon: 'error',
                             confirmButtonText: 'OK'
                         })
-        
+
                     })
 
 
-                // fetch(`https://brand-shop-844bnpgxw-yeasins-projects-c520e666.vercel.app/cart/${id}`, {
-                //     method: "DELETE"
-
-                // })
-                //     .then(res => res.json())
-                //     .then(data => {
-                //         console.log(data)
-                //         if (data.deletedCount > 0) {
-
-                //             Swal.fire(
-                //                 'Deleted!',
-                //                 'Your file has been deleted.',
-                //                 'success'
-                //             )
-
-                //             const remainingUsers = loadedUsers.filter(aData => aData._id !== id)
-                //             setLoadedUsers(remainingUsers)
-
-                //         }
-                //     })
 
             }
         })
@@ -96,10 +110,49 @@ const PostedJobsCard = ({ cartdata,setLoadedUsers,loadedUsers }) => {
                 <h1>max price : {max_price}</h1>
                 <h1> Description: {short_description}</h1>
                 <h1>application deadline : {deadline} </h1>
+
+
+
+                <>
+                {
+                    filtersData ? 
+                    <div className="card-actions justify-center">
+
+
+
+
+                    
+                        <Link to={`/update/${_id}`} ><button className="btn btn-primary">Update</button></Link>
+                        <Link  ><button  onClick={() => handleDelete(_id)} className="btn bg-green-400">Delete</button></Link>
+                    
+                </div> :
                 <div className="card-actions justify-center">
+
+
+
+
+                    
+                <Link to={`/update/${_id}`} ><button disabled className="btn btn-primary">Update</button></Link>
+                <Link  ><button disabled onClick={() => handleDelete(_id)} className="btn btn-primary">Delete</button></Link>
+            
+        </div>
+                }
+                
+                
+                
+                
+                </>
+
+                {/* <div className="card-actions justify-center">
+
+
+
+
+
                     <Link to={`/update/${_id}`} ><button className="btn btn-primary">Update</button></Link>
-                    <Link  ><button onClick={() => handleDelete(_id)} className="btn btn-primary">Delete</button></Link>
-                </div>
+                    <Link  ><button onClick={() => handleDelete(_id)} className="btn bg-green-400">Delete</button></Link>
+
+                </div> */}
             </div>
         </div>
     );

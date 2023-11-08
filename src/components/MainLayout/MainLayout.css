@@ -1,0 +1,20 @@
+.costom-bg{
+    background-image: 'url("https://i.ibb.co/YWhStD7/mesh-757.png")';
+    background-repeat: no-repeat;
+    background-size: auto;
+    
+}
+.dark-theme{
+    
+    color: rgb(106, 40, 40);
+
+    
+    /* background-image:  url("https://i.ibb.co/qWkn1sC/blurry-gradient-haikei-2.png"); */
+    background-image:  url("https://i.ibb.co/4gxWTDp/pexels-johannes-plenio-1103970.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+  }
+
+  

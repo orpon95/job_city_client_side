@@ -17,16 +17,17 @@ const MypostedJob = () => {
 
     // tenstack
     const { data, isLoading, isFetching, refetch } = useQuery({
-        queryKey: ["addealldData"],
+        queryKey: ["addealldDatasdfsf"],
         queryFn: async () => {
             const res = await axios.get(`http://localhost:5000/api/v1/getAddedJobsData?email=${user.email}`, {
                 withCredentials: true
             })
-            return await res.data
+            return await res?.data
         }
 
 
     })
+   
     useEffect(()=>{
         setLoadedUsers(data)
 
@@ -35,8 +36,9 @@ const MypostedJob = () => {
 
 
     const [loadedUsers, setLoadedUsers] = useState([])
-     console.log("tan data",data);
-     console.log("load", loadedUsers);
+    //  console.log("tan data",data);
+    //  console.log("load", loadedUsers);
+    
 
 
     // useefect start
@@ -53,7 +55,7 @@ const MypostedJob = () => {
 
 
     return (
-        <div>
+        <div className='h-screen'>
             <h1 className='text-2xl font-extrabold my-9 text-center' > All posted Jobs </h1>
 
             <div className='grid border-2 border-red-400 grid-cols-1 md:grid-cols-2 gap-7' >

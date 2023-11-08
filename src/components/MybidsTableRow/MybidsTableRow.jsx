@@ -4,8 +4,9 @@ import React from 'react';
 import Swal from 'sweetalert2';
 
 const MybidsTableRow = ({ data,refetch }) => {
+    // const {user}= data
     const { job_title, deadline, price, bidder_email, Buyer_email, _id, status, complete_status } = data
-    console.log(refetch);
+    // console.log(refetch);
 
     // accept button handler
     const handleComplete = (id) => {

@@ -6,7 +6,7 @@ const JobCard = ({ data }) => {
     console.log(data);
     const { categories, deadline, job_title, max_price, min_price, short_description, _id } = data
     return (
-        <div className="card  bg-base-100 shadow-xl">
+        <div className="  bg-transparent shadow-xl">
             {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
             <div className="card-body">
                 <h2 className="card-title"> job categories: {categories}</h2>

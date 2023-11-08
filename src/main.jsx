@@ -23,7 +23,7 @@ import Update from './components/Update/Update.jsx';
 import Delete from './components/Delete/Delete.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import axios from 'axios';
-import { useContext } from 'react';
+// import { useContext } from 'react';
 
 const queryClient = new QueryClient()
 
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<h1>no data</h1>,
     children: [
       {
         index: true,
@@ -75,7 +76,9 @@ const router = createBrowserRouter([
       {
         path: "details/:id",
         element: <PrivateRoute><Details></Details></PrivateRoute> ,
-        loader: ()=>fetch("http://localhost:5000/api/v1/getAddedJobsData")
+        loader: ()=>fetch("http://localhost:5000/api/v2/getAddedJobsData",{
+          withCredentials:true
+        })
       },
       {
         path: "update/:id",

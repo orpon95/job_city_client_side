@@ -9,11 +9,12 @@ const MyBids = () => {
     const {data:AllData,isLoading,isFetching,refetch} = UseBiddedData()
     // console.log("refetch is",refetch,"isloading is", isLoading);
     // console.log(refetch);
+    console.log("alldata",AllData);
 
 
 
     return (
-        <div>
+        <div className='h-screen'>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

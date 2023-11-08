@@ -10,12 +10,12 @@ const Details = () => {
 
     const alldata = useLoaderData()
     const { id } = useParams()
-    // console.log(data);
+    console.log(alldata);
     console.log(id);
 
 
     const singleData = alldata?.find(Data => Data?._id === id)
-    console.log(singleData);
+    console.log("single data",singleData);
     const { categories, deadline, job_title, max_price, min_price, short_description, _id, email } = singleData
 
 
@@ -74,7 +74,7 @@ const Details = () => {
     return (
         <div>
             <h1>details</h1>
-            <div className="card  bg-base-100 shadow-xl">
+            <div className="card   shadow-xl">
                 {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
                 <div className="card-body">
 
@@ -106,7 +106,7 @@ const Details = () => {
                         {/* deadline */}
                         <div className='text-center'>
                             <label htmlFor="deadline" className='text-xl font-bold'>deadline</label>
-                            <input type="date" readOnly required name='deadline' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
+                            <input type="date"  required name='deadline' className=" bg-transparent shadow-2xl border-2 border-cyan-300 flex-1 input input-bordered w-full max-w-xs mx-3" /> <br />
                         </div>
                         {/* title of job */}
                         <div className='text-center'>
@@ -146,7 +146,7 @@ const Details = () => {
 
                         <div className='text-center'>
 
-                            {/* {
+                            {
                                 user?.email == email ?
                                  <button disabled type='submit' className='btn btn-ghost border-2  shadow-2xl  border-cyan-300'  >
 
@@ -154,10 +154,10 @@ const Details = () => {
                                 <button type='submit' className='btn btn-ghost border-2  shadow-2xl  border-cyan-300'  >
 
                                 Bid On the project </button>
-                            } */}
-                            <button type='submit' className='btn btn-ghost border-2  shadow-2xl  border-cyan-300'  >
+                            }
+                            {/* <button type='submit' className='btn btn-ghost border-2  shadow-2xl  border-cyan-300'  >
 
-                                Bid On the project </button>
+                                Bid On the project </button> */}
 
                         </div>
 
@@ -166,6 +166,9 @@ const Details = () => {
                 </div>
             </div>
         </div>
+        // <div>
+        //     hi
+        // </div>
     );
 };
 

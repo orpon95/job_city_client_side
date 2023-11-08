@@ -3,9 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import JobCard from '../JobCard/JobCard';
+import Banner from '../Banner/Banner';
 
 const Home = () => {
-  
+
     // console.log(tabIndex);
     const [activeTab, setActiveTab] = useState("web development");
     const [jobdata, setJobData] = useState([])
@@ -32,61 +33,64 @@ const Home = () => {
     const filteredData = jobdata?.filter(data => data.categories == activeTab);
 
     return (
-        <div className='text-center mx-auto' >
-            <Tabs className="border-2 border-red-500 text-center justify-center" >
-                <TabList className="border-2 border-blue-500 items-center text-center justify-center" >
-                    <div className='flex gap-6 justify-center' >
-                        <Tab onClick={() => handleTabClick('web development')} ><button className='btn-ghost' >web development</button></Tab>
-                        <Tab onClick={() => handleTabClick('digital marketing')} ><button className='btn-ghost'>digital marketing</button> </Tab>
-                        <Tab onClick={() => handleTabClick('graphics design')} ><button className='btn-ghost'>graphics design</button></Tab>
-                    </div>
-
-                </TabList>
-                <TabPanel>
-                    {
-                        <div className=' border-2 border-red-500 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 '>
-                            {
-                                filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
-
-                            }
-
+        <div>
+            <Banner></Banner>
+            <div className=' bg-transparent text-center mx-auto' >
+                <Tabs className="border-2 border-red-500 text-center justify-center" >
+                    <TabList className="border-2 border-blue-500 items-center text-center justify-center" >
+                        <div className='flex gap-6 justify-center' >
+                            <Tab onClick={() => handleTabClick('web development')} ><button className='btn-ghost' >web development</button></Tab>
+                            <Tab onClick={() => handleTabClick('digital marketing')} ><button className='btn-ghost'>digital marketing</button> </Tab>
+                            <Tab onClick={() => handleTabClick('graphics design')} ><button className='btn-ghost'>graphics design</button></Tab>
                         </div>
 
-
-                    }
-
-                </TabPanel>
-                <TabPanel>
-                    {
-                        // tabIndex == 0 ? <p>web</p>:"other"
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
-                            {
-                                filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
-
-                            }
-
-                        </div>
-
-
-
-                    }
-                </TabPanel>
-                <TabPanel>
-                    {<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                    </TabList>
+                    <TabPanel>
                         {
-                            filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
+                            <div className=' border-2 bg-transparent grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 '>
+                                {
+                                    filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
+
+                                }
+
+                            </div>
+
 
                         }
 
-                    </div>
+                    </TabPanel>
+                    <TabPanel>
+                        {
+                            // tabIndex == 0 ? <p>web</p>:"other"
+                            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                                {
+                                    filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
+
+                                }
+
+                            </div>
 
 
-                    }
-                </TabPanel>
-            </Tabs>
+
+                        }
+                    </TabPanel>
+                    <TabPanel>
+                        {<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                            {
+                                filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
+
+                            }
+
+                        </div>
+
+
+                        }
+                    </TabPanel>
+                </Tabs>
 
 
 
+            </div>
         </div>
     );
 };

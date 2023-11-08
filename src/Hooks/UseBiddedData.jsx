@@ -1,13 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
+import { authContext } from '../AuthProvider/AuthProvider';
 
 const UseBiddedData = () => {
+    const {user} = useContext(authContext)
 
     const {data,isLoading,isFetching,refetch} = useQuery({
-        queryKey: ["biddedData"],
+        queryKey: ["biddedDatasss"],
         queryFn: async ()=>{
-          const res = await  axios.get("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
+          const res = await  axios.get(`http://localhost:5000/api/v1/employ/getAllBiddedJobs?email=${user.email}`,{
+            withCredentials:true
+          })
             return await res.data
         }
 

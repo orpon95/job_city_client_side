@@ -4,6 +4,8 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import JobCard from '../JobCard/JobCard';
 import Banner from '../Banner/Banner';
+import AboutUs from './AboutUs/AboutUs';
+import OurPartner from './OurPartner/OurPartner';
 
 const Home = () => {
 
@@ -35,19 +37,21 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+
+            <h1 className='text-4xl font-bold my-8 text-center'> Jobs Categories</h1>
             <div className=' bg-transparent text-center mx-auto' >
-                <Tabs className="border-2 border-red-500 text-center justify-center" >
-                    <TabList className="border-2 border-blue-500 items-center text-center justify-center" >
+                <Tabs className="shadow-2xl shadow-black text-center justify-center" >
+                    <TabList className=" my-8 items-center text-center justify-center" >
                         <div className='flex gap-6 justify-center' >
-                            <Tab onClick={() => handleTabClick('web development')} ><button className='btn-ghost' >web development</button></Tab>
-                            <Tab onClick={() => handleTabClick('digital marketing')} ><button className='btn-ghost'>digital marketing</button> </Tab>
-                            <Tab onClick={() => handleTabClick('graphics design')} ><button className='btn-ghost'>graphics design</button></Tab>
+                            <Tab onClick={() => handleTabClick('web development')} ><button className='btn bg-transparent hero-overlay  text-2xl font-bold' >web development</button></Tab>
+                            <Tab onClick={() => handleTabClick('digital marketing')} ><button className='btn bg-transparent hero-overlay text-2xl font-bold'>digital marketing</button> </Tab>
+                            <Tab onClick={() => handleTabClick('graphics design')} ><button className='btn bg-transparent hero-overlay text-2xl font-bold'>graphics design</button></Tab>
                         </div>
 
                     </TabList>
                     <TabPanel>
                         {
-                            <div className=' border-2 bg-transparent grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 '>
+                            <div className='  bg-transparent place-items-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 '>
                                 {
                                     filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
 
@@ -91,6 +95,11 @@ const Home = () => {
 
 
             </div>
+
+
+            <AboutUs></AboutUs>
+            <OurPartner></OurPartner>
+           
         </div>
     );
 };

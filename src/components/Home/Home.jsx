@@ -16,7 +16,7 @@ const Home = () => {
     // console.log(jobdata);
     const { user } = useContext(authContext)
     // console.log(activeTab);
-    const url = `https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v2/getAddedJobsData`
+    const url = `http://localhost:5000/api/v2/getAddedJobsData`
 
     useEffect(() => {
         fetch(url)

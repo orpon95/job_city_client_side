@@ -11,7 +11,7 @@ const MyBidRequestRow = ({ data, refetch }) => {
     // reject button handler
     const handleReject = (id) => {
         const rejectmsg = { status: "rejected" }
-        axios.patch(`https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v1/employ/getAllBiddedJobs/${id}`, rejectmsg)
+        axios.patch(`http://localhost:5000/api/v1/employ/getAllBiddedJobs/${id}`, rejectmsg)
             .then(res => {
                 if (res?.data?.modifiedCount > 0) {
 
@@ -39,7 +39,7 @@ const MyBidRequestRow = ({ data, refetch }) => {
     // accept button handler
     const handleAccept = (id) => {
         const acceptmsg = { status: "accepted" }
-        axios.patch(`https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v1/employ/getAllBiddedJobs/${id}`, acceptmsg)
+        axios.patch(`http://localhost:5000/api/v1/employ/getAllBiddedJobs/${id}`, acceptmsg)
             .then(res => {
 
                 if (res?.data?.modifiedCount > 0) {

@@ -1,22 +1,19 @@
+/* App.css (or a separate CSS/SCSS file) */
 .dark-mode-toggle {
     display: flex;
     align-items: center;
   }
-.dark-theme{
+  .dark-theme{
     
-    color: rgb(106, 40, 40);
-
-    
-    /* background-image:  url("https://i.ibb.co/qWkn1sC/blurry-gradient-haikei-2.png"); */
-    background-image:  url("https://i.ibb.co/4gxWTDp/pexels-johannes-plenio-1103970.jpg");
+    color: rgb(38, 10, 44) ;
+    background-image: url("https://i.ibb.co/qWkn1sC/blurry-gradient-haikei-2.png");
     background-repeat: no-repeat;
     background-size: cover;
-
 
   }
   .light-theme{
     background-image: url("https://i.ibb.co/XCKDZsk/blurry-gradient-haikei.png");
-    color: black;
+    color: rgb(13, 32, 78);
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -75,5 +72,4 @@
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-  
   

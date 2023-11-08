@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
 import axios, { Axios } from 'axios';
+import "./Navbar.css"
 
-const Navbar = () => {
+const Navbar = ({tData}) => {
     const nevigate = useNavigate()
 
     const { user, logOut, googlesign } = useContext(authContext)
@@ -16,13 +18,13 @@ const Navbar = () => {
         logOut()
             .then(() => {
                 setLoggedInUser('')
-                const loggeduser = {email : user?.email}
+                const loggeduser = { email: user?.email }
 
                 // clear coki
-                axios.post("https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v1/jwt/logout",loggeduser,{
-                    withCredentials:true
+                axios.post("http://localhost:5000/api/v1/jwt/logout", loggeduser, {
+                    withCredentials: true
                 })
-                .then(res => console.log(res.data))
+                    .then(res => console.log(res.data))
 
 
             })
@@ -35,16 +37,16 @@ const Navbar = () => {
             .then(result => {
                 setLoggedInUser(result.user)
                 const loggeduser = result.user
-                const user = {email}
-                axios.post("https://job-city-server-b4b24onqc-yeasins-projects-c520e666.vercel.app/api/v1/jwt",user,{
-                    withCredentials:true
+                const user = { email }
+                axios.post("http://localhost:5000/api/v1/jwt", user, {
+                    withCredentials: true
                 })
-                .then(res=> {
-                    console.log(res.data)
-                    if(res.data.success){
-                        nevigate(location?.state ? location.state : "/")
-                    }
-                })
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data.success) {
+                            nevigate(location?.state ? location.state : "/")
+                        }
+                    })
             })
             .catch(err => {
                 console.log(err)
@@ -54,6 +56,16 @@ const Navbar = () => {
 
 
     }
+
+
+
+    const [darkMode, setDarkMode] = useState(true)
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+        // You can save the user's preference in local storage or a state management system.
+    };
+    tData(darkMode)
     return (
         <div className="drawer shadow-lg mb-6 rounded-lg shadow-black">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -71,6 +83,14 @@ const Navbar = () => {
                     </div>
                     {/* title */}
                     <div className="flex-1  mx-2 font-poppins font-bold text-3xl  italic ">Job City</div>
+                    {/* toogle button start */}
+                    <label className="switch">
+                        <input type="checkbox" onChange={toggleDarkMode} checked={darkMode} />
+                        <span className="slider round"></span>
+                    </label>
+
+
+                    {/* toggle button end */}
                     <div className="flex-none hidden lg:block">
                         <ul className="menu menu-horizontal flex flex-col gap-6 text-lg font-medium underline">
                             {/* Navbar menu content here */}
@@ -120,17 +140,17 @@ const Navbar = () => {
                     </div>
                 </div>
                 {/* Page content here */}
-                
+
             </div>
             <div className="drawer-side z-20">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 space-y-5 text-lg text-blue-400">
                     {/* Sidebar content here */}
-                    <NavLink  to={"/"}  > <button className='underline  hover:bg-red-300'> Home</button></NavLink>
+                    <NavLink to={"/"}  > <button className='underline  hover:bg-red-300'> Home</button></NavLink>
                     <NavLink to={"addJob"} > <button className='underline  hover:bg-red-300'>Add job</button></NavLink>
                     <NavLink to={"myPostedJob"}> <button className='underline  hover:bg-red-300'> My Posted job</button></NavLink>
                     <NavLink to={"myBids"}> <button className='underline  hover:bg-red-300'> My Bids</button></NavLink>
-                    <NavLink  to={"myBidsRequest"} > <button className='underline  hover:bg-red-300'> My Bids request</button></NavLink>
+                    <NavLink to={"myBidsRequest"} > <button className='underline  hover:bg-red-300'> My Bids request</button></NavLink>
                     <NavLink to={"register"}> <button className='underline  hover:bg-red-300'> register</button></NavLink>
 
                     {

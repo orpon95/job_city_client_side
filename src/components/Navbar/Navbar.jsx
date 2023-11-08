@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { authContext } from '../../AuthProvider/AuthProvider';
-import axios from 'axios';
+import axios, { Axios } from 'axios';
 
 const Navbar = () => {
     const nevigate = useNavigate()
@@ -16,6 +16,14 @@ const Navbar = () => {
         logOut()
             .then(() => {
                 setLoggedInUser('')
+                const loggeduser = {email : user?.email}
+
+                // clear coki
+                axios.post("http://localhost:5000/api/v1/jwt/logout",loggeduser,{
+                    withCredentials:true
+                })
+                .then(res => console.log(res.data))
+
 
             })
             .catch(err => console.log(err))

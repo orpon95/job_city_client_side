@@ -97,7 +97,7 @@ const PostedJobsCard = ({ cartdata, setLoadedUsers, loadedUsers }) => {
 
     }
     return (
-        <div className="card  text-center  bg-base-100 shadow-xl">
+        <div className="card  text-center   shadow-xl">
             {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
             <div className="card-body">
                 <h1>Email : {email}</h1>
@@ -122,8 +122,8 @@ const PostedJobsCard = ({ cartdata, setLoadedUsers, loadedUsers }) => {
 
 
                     
-                        <Link to={`/update/${_id}`} ><button className="btn btn-primary">Update</button></Link>
-                        <Link  ><button  onClick={() => handleDelete(_id)} className="btn bg-green-400">Delete</button></Link>
+                        <Link to={`/update/${_id}`} ><button className="btn  bg-transparent">Update</button></Link>
+                        <Link  ><button  onClick={() => handleDelete(_id)} className="btn bg-transparent">Delete</button></Link>
                     
                 </div> :
                 <div className="card-actions justify-center">

@@ -58,7 +58,7 @@ const MypostedJob = () => {
         <div className='h-screen'>
             <h1 className='text-2xl font-extrabold my-9 text-center' > All posted Jobs </h1>
 
-            <div className='grid border-2 border-red-400 grid-cols-1 md:grid-cols-2 gap-7' >
+            <div className='grid place-items-center border-2 border-red-400 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5' >
                 {
                     // AllData?.map(data => <PostedJobsCard key={data._id} data={data} ></PostedJobsCard> )
                     loadedUsers?.map(loadedUser => <PostedJobsCard key={loadedUser._id} cartdata={loadedUser} setLoadedUsers={setLoadedUsers} loadedUsers={loadedUsers} ></PostedJobsCard>)

@@ -74,7 +74,7 @@ const AddJob = () => {
                 <div className='text-center'>
                     <label htmlFor="job-title" className='text-xl font-bold mx-3'>job-title</label>
                     <select
-                        className='border-2 bg-transparent shadow-2xl  border-cyan-300 p-3 flex-1'
+                        className='border-2 w-full bg-transparent shadow-2xl  border-cyan-300 p-3 flex-1'
 
                         name="job_title"
                         required

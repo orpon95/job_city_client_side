@@ -40,12 +40,12 @@ const Home = () => {
 
             <h1 className='text-4xl font-bold my-8 text-center'> Jobs Categories</h1>
             <div className=' bg-transparent text-center mx-auto' >
-                <Tabs className="shadow-2xl shadow-black text-center justify-center" >
+                <Tabs className="p-3 shadow-2xl shadow-black text-center justify-center" >
                     <TabList className=" my-8 items-center text-center justify-center" >
-                        <div className='flex gap-6 justify-center' >
-                            <Tab onClick={() => handleTabClick('web development')} ><button className='btn bg-transparent hero-overlay  text-2xl font-bold' >web development</button></Tab>
-                            <Tab onClick={() => handleTabClick('digital marketing')} ><button className='btn bg-transparent hero-overlay text-2xl font-bold'>digital marketing</button> </Tab>
-                            <Tab onClick={() => handleTabClick('graphics design')} ><button className='btn bg-transparent hero-overlay text-2xl font-bold'>graphics design</button></Tab>
+                        <div className='flex flex-wrap  gap-2 md:gap-5 justify-center' >
+                            <Tab onClick={() => handleTabClick('web development')} ><button className='btn bg-white opacity-60 hover:bg-red-300 hero-overlay text-base md:text-2xl font-bold' >web development</button></Tab>
+                            <Tab onClick={() => handleTabClick('digital marketing')} ><button className='btn bg-white opacity-60 hover:bg-red-300 hero-overlay text-base md:text-2xl font-bold'>digital marketing</button> </Tab>
+                            <Tab onClick={() => handleTabClick('graphics design')} ><button className='btn bg-white opacity-60 hover:bg-red-300 hero-overlay text-base md:text-2xl font-bold'>graphics design</button></Tab>
                         </div>
 
                     </TabList>

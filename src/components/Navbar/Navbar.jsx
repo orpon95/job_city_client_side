@@ -67,11 +67,11 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal flex flex-col gap-6 text-lg font-medium underline">
                             {/* Navbar menu content here */}
                             <div className='flex gap-6 text-lg font-medium underline'>
-                                <NavLink to={"/"} > <button className='underline'> Home</button></NavLink>
-                                <NavLink to={"addJob"} > <button className='underline'>Add job</button></NavLink>
-                                <NavLink to={"myPostedJob"} > <button className='underline'> My Posted job</button></NavLink>
-                                <NavLink to={"myBids"} > <button className='underline'> My Bids</button></NavLink>
-                                <NavLink to={"myBidsRequest"} > <button className='underline'> My Bids request</button></NavLink>
+                                <NavLink to={"/"} > <button className='underline  hover:bg-red-300'> Home</button></NavLink>
+                                <NavLink to={"addJob"} > <button className='underline  hover:bg-red-300'>Add job</button></NavLink>
+                                <NavLink to={"myPostedJob"} > <button className='underline  hover:bg-red-300'> My Posted job</button></NavLink>
+                                <NavLink to={"myBids"} > <button className='underline  hover:bg-red-300'> My Bids</button></NavLink>
+                                <NavLink to={"myBidsRequest"} > <button className='underline  hover:bg-red-300'> My Bids request</button></NavLink>
                             </div>
                             <div>
                                 <NavLink to={"register"}> <button className='underline'> register</button></NavLink>
@@ -118,12 +118,12 @@ const Navbar = () => {
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 min-h-full bg-base-200 space-y-5 text-lg text-blue-400">
                     {/* Sidebar content here */}
-                    <NavLink  to={"/"}  > <button className='underline'> Home</button></NavLink>
-                    <NavLink to={"addJob"} > <button className='underline'>Add job</button></NavLink>
-                    <NavLink to={"myPostedJob"}> <button className='underline'> My Posted job</button></NavLink>
-                    <NavLink to={"myBids"}> <button className='underline'> My Bids</button></NavLink>
-                    <NavLink  to={"myBidsRequest"} > <button className='underline'> My Bids request</button></NavLink>
-                    <NavLink to={"register"}> <button className='underline'> register</button></NavLink>
+                    <NavLink  to={"/"}  > <button className='underline  hover:bg-red-300'> Home</button></NavLink>
+                    <NavLink to={"addJob"} > <button className='underline  hover:bg-red-300'>Add job</button></NavLink>
+                    <NavLink to={"myPostedJob"}> <button className='underline  hover:bg-red-300'> My Posted job</button></NavLink>
+                    <NavLink to={"myBids"}> <button className='underline  hover:bg-red-300'> My Bids</button></NavLink>
+                    <NavLink  to={"myBidsRequest"} > <button className='underline  hover:bg-red-300'> My Bids request</button></NavLink>
+                    <NavLink to={"register"}> <button className='underline  hover:bg-red-300'> register</button></NavLink>
 
                     {
                         user ? <button onClick={handleSignOut} className='btn btn-ghost mt-2 underline'> sign out</button> :

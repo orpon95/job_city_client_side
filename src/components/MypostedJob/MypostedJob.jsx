@@ -20,9 +20,11 @@ const MypostedJob = () => {
     const { data, isLoading, isFetching, refetch } = useQuery({
         queryKey: ["addealldDatasdfsf"],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5000/api/v1/getAddedJobsData?email=${user.email}`, {
+            const res = await axios.get(`https://job-city-server.vercel.app/api/v1/getAddedJobsData?email=${user.email}`
+            , {
                 withCredentials: true
-            })
+            }
+            )
             return await res?.data
         }
 
@@ -44,7 +46,7 @@ const MypostedJob = () => {
 
     // useefect start
     // useEffect(()=>{
-    //     axios.get("http://localhost:5000/api/v1/getAddedJobsData",{
+    //     axios.get("https://job-city-server.vercel.appapi/v1/getAddedJobsData",{
     //         withCredentials:true
     //     })
     //     .then(res=> setAllData(res.data) )
@@ -62,7 +64,7 @@ const MypostedJob = () => {
             </Helmet>
             <h1 className='text-2xl font-extrabold my-9 text-center' > All posted Jobs </h1>
 
-            <div className='grid place-items-center border-2 border-red-400 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5' >
+            <div className='h-full grid justify-items-center place-items-center border-2 border-red-400 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5' >
                 {
                     // AllData?.map(data => <PostedJobsCard key={data._id} data={data} ></PostedJobsCard> )
                     loadedUsers?.map(loadedUser => <PostedJobsCard key={loadedUser._id} cartdata={loadedUser} setLoadedUsers={setLoadedUsers} loadedUsers={loadedUsers} ></PostedJobsCard>)

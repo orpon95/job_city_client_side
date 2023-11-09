@@ -11,7 +11,7 @@ const UseBiddedData = () => {
     const {data,isLoading,isFetching,refetch} = useQuery({
         queryKey: ["biddedDatasss"],
         queryFn: async ()=>{
-          const res = await  axios.get(`http://localhost:5000/api/v1/employ/getAllBiddedJobs?email=${user.email}`,{
+          const res = await  axios.get(`https://job-city-server.vercel.app/api/v1/employ/getAllBiddedJobs?email=${user.email}`,{
             withCredentials:true
           })
             return await res.data

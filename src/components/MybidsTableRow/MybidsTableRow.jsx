@@ -11,7 +11,7 @@ const MybidsTableRow = ({ data,refetch }) => {
     // accept button handler
     const handleComplete = (id) => {
         const confirmedMsg = { status: "completed" }
-        axios.patch(`http://localhost:5000/api/v2/employ/getAllBiddedJobs/${id}`, confirmedMsg)
+        axios.patch(`https://job-city-server.vercel.app/api/v2/employ/getAllBiddedJobs/${id}`, confirmedMsg)
             .then(res => {
                 console.log(res.data);
                 // reFetch()

@@ -6,7 +6,7 @@ const UseAlladdedjobs = () => {
     const {data,isLoading,isFetching,refetch} = useQuery({
         queryKey: ["addedData"],
         queryFn: async ()=>{
-          const res = await  axios.get("http://localhost:5000/api/v1/getAddedJobsData",{
+          const res = await  axios.get("https://job-city-server.vercel.app/api/v1/getAddedJobsData",{
             withCredentials:true
           })
             return await res.data

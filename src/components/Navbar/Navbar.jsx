@@ -20,8 +20,8 @@ const Navbar = ({tData}) => {
                 setLoggedInUser('')
                 const loggeduser = { email: user?.email }
 
-                // clear coki
-                axios.post("http://localhost:5000/api/v1/jwt/logout", loggeduser, {
+                // clear coki start
+                axios.post("https://job-city-server.vercel.app/api/v1/jwt/logout", loggeduser, {
                     withCredentials: true
                 })
                     .then(res => console.log(res.data))
@@ -38,7 +38,8 @@ const Navbar = ({tData}) => {
                 setLoggedInUser(result.user)
                 const loggeduser = result.user
                 const user = { email }
-                axios.post("http://localhost:5000/api/v1/jwt", user, {
+                // start
+                axios.post("https://job-city-server.vercel.app/api/v1/jwt", user, {
                     withCredentials: true
                 })
                     .then(res => {
@@ -47,6 +48,7 @@ const Navbar = ({tData}) => {
                             nevigate(location?.state ? location.state : "/")
                         }
                     })
+                    // end
             })
             .catch(err => {
                 console.log(err)

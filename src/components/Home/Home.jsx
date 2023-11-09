@@ -17,7 +17,7 @@ const Home = () => {
     // console.log(jobdata);
     const { user } = useContext(authContext)
     // console.log(activeTab);
-    const url = `http://localhost:5000//api/v2/getAddedJobsData`
+    const url = `https://job-city-server.vercel.app/api/v2/getAddedJobsData`
 
     useEffect(() => {
         fetch(url)
@@ -42,7 +42,7 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
 
-            <h1 className='text-4xl font-bold my-8 text-center'> Jobs Categories</h1>
+            <h1 className='text-4xl font-bold my-8 text-center'> JOBs Categories</h1>
             <div className=' bg-transparent text-center mx-auto' >
                 <Tabs className="p-3 shadow-2xl shadow-black text-center justify-center" >
                     <TabList className=" my-8 items-center text-center justify-center" >

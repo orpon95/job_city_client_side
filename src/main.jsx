@@ -49,20 +49,20 @@ const router = createBrowserRouter([
       {
         path: "myPostedJob",
         element: <PrivateRoute> <MypostedJob></MypostedJob></PrivateRoute>,
-        // loader: ()=> fetch("http://localhost:5000/api/v1/getAddedJobsData")
-        loader: () => axios.get("http://localhost:5000/api/v1/getAddedJobsData", {
-          withCredentials: true
-        })
+        // loader: ()=> fetch("https://job-city-server.vercel.appapi/v1/getAddedJobsData")
+        // loader: () => axios.get("https://job-city-server.vercel.appapi/v1/getAddedJobsData", {
+        //   withCredentials: true
+        // })
       },
       {
         path: "myBids",
         element: <PrivateRoute><MyBids></MyBids></PrivateRoute>,
-        // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
+        // loader:()=>fetch("https://job-city-server.vercel.appapi/v1/employ/getAllBiddedJobs")
       },
       {
         path: "myBidsRequest",
         element: <PrivateRoute><MyBidsRequest></MyBidsRequest></PrivateRoute>,
-        // loader:()=>fetch("http://localhost:5000/api/v1/employ/getAllBiddedJobs")
+        // loader:()=>fetch("https://job-city-server.vercel.appapi/v1/employ/getAllBiddedJobs")
       },
       {
         path: "register",
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
       {
         path: "details/:id",
         element: <PrivateRoute><Details></Details></PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/api/v2/getAddedJobsData", {
+        loader: () => fetch("https://job-city-server.vercel.app/api/v2/getAddedJobsData", {
           withCredentials: true
         })
       },

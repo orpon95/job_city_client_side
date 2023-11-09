@@ -34,7 +34,7 @@ const AddJob = () => {
         //     },
         //     body: JSON.stringify(newProduct)
         // })
-        axios.post("http://localhost:5000/api/v1/addJobs",addedJobs)
+        axios.post("https://job-city-server.vercel.app/api/v1/addJobs",addedJobs)
             
             .then(data => {
                 console.log(data.data)

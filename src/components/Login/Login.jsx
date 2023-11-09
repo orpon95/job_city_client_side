@@ -30,7 +30,8 @@ const Login = () => {
             .then(result => {
                 const loggeduser = result.user
                 const user = { email }
-                axios.post("http://localhost:5000/api/v1/jwt", user, {
+                // token start
+                axios.post("https://job-city-server.vercel.app/api/v1/jwt", user, {
                     withCredentials: true
                 })
                     .then(res =>  {
@@ -40,6 +41,7 @@ const Login = () => {
                         }
                     }
                     )
+                    // token end
 
                 console.log("loggen in user", result.user)
                 Swal.fire({

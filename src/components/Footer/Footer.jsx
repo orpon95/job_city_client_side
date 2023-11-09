@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
+        <div className=''>
             <footer className=" my-5 shadow-2xl shadow-black footer p-10  text-neutral-content">
                 <nav className='flex justify-center items-center'>
                     <span className='w-[50px] h-[50px] rounded-full'><img className='w-full rounded-[50%]' src="https://i.ibb.co/PjDkYcs/png-transparent-career-development-job-application-for-employment-business-career-miscellaneous-trad.png" alt="" /></span>
@@ -17,9 +17,9 @@ const Footer = () => {
                 </nav>
                 <nav>
                     <header className="text-black footer-title">social media links</header>
-                    <a className="text-black link link-hover">facebook</a>
-                    <a className="text-black link link-hover">twiter</a>
-                    <a className="text-black link link-hover">instagram</a>
+                    <a className="text-black link link-hover   underline">facebook</a>
+                    <a className="text-black link link-hover underline ">twiter</a>
+                    <a className="text-black link link-hover underline ">instagram</a>
                     {/* <a className="link link-hover">Press kit</a> */}
                 </nav>
                 <nav>

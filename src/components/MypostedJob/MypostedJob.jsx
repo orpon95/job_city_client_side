@@ -58,7 +58,7 @@ const MypostedJob = () => {
 
 
     return (
-        <div className='h-screen'>
+        <div className='h-screen my-5'>
             <Helmet>
                 <title> MyPostedJobs</title>
             </Helmet>

@@ -12,13 +12,13 @@ const JobCard = ({ data }) => {
             {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
             <div className="card-body">
                 <h2 className="card-title"> job categories: {categories}</h2>
-                <p>job-title: {job_title}</p>
+                <p className='text-2xl font-bold'> job-title:<span className='text-lg font-medium'>{job_title}</span> </p>
                 {/* <div className="card-actions justify-end">
                     <button className="btn btn-primary">Buy Now</button>
                 </div> */}
-                <h1>Estimated sellary: {min_price} - {max_price}</h1>
-                <h1> Description: {short_description}</h1>
-                <h1>application deadline : {deadline} </h1>
+                <h1 className='text-2xl font-bold'>Estimated sellary: <span  className='text-lg font-medium'>{min_price} - {max_price}</span></h1>
+                <h1 className='text-2xl font-bold'> Description: <span className='text-lg font-medium'>{short_description}</span></h1>
+                <h1 className='text-2xl font-bold'>application deadline : <span className='text-lg font-medium'>{deadline}</span> </h1>
                 <div className="card-actions justify-center">
                     <Link to={`/details/${_id}`} ><button className="btn bg-transparent">Bid Now</button></Link>
                 </div>

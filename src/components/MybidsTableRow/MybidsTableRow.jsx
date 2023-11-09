@@ -11,7 +11,7 @@ const MybidsTableRow = ({ data,refetch }) => {
     // accept button handler
     const handleComplete = (id) => {
         const confirmedMsg = { status: "completed" }
-        axios.patch(`https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v2/employ/getAllBiddedJobs/${id}`, confirmedMsg)
+        axios.patch(`http://localhost:5000/api/v2/employ/getAllBiddedJobs/${id}`, confirmedMsg)
             .then(res => {
                 console.log(res.data);
                 // reFetch()
@@ -103,9 +103,14 @@ const MybidsTableRow = ({ data,refetch }) => {
                         <button onClick={() => handleComplete(_id)}  className='btn bg-red-500 text-yellow-300'> complete</button> :
                         // complete_status == "completed" ?
                         // <button disabled className='btn-warning text-yellow-300'> complete</button> :
+                        status == "rejected" ?
 
 
                         <button disabled  className='btn bg-green-900 text-red-500'> complete</button>
+                         :
+                         <button disabled  className='btn bg-green-900 text-red-500'> complete</button>
+                        
+
                 }
 
 

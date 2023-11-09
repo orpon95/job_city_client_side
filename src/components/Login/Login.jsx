@@ -30,7 +30,7 @@ const Login = () => {
             .then(result => {
                 const loggeduser = result.user
                 const user = { email }
-                axios.post("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/jwt", user, {
+                axios.post("http://localhost:5000/api/v1/jwt", user, {
                     withCredentials: true
                 })
                     .then(res =>  {

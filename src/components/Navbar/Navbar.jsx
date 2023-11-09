@@ -21,7 +21,7 @@ const Navbar = ({tData}) => {
                 const loggeduser = { email: user?.email }
 
                 // clear coki
-                axios.post("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/jwt/logout", loggeduser, {
+                axios.post("http://localhost:5000/api/v1/jwt/logout", loggeduser, {
                     withCredentials: true
                 })
                     .then(res => console.log(res.data))
@@ -38,7 +38,7 @@ const Navbar = ({tData}) => {
                 setLoggedInUser(result.user)
                 const loggeduser = result.user
                 const user = { email }
-                axios.post("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/jwt", user, {
+                axios.post("http://localhost:5000/api/v1/jwt", user, {
                     withCredentials: true
                 })
                     .then(res => {
@@ -95,7 +95,7 @@ const Navbar = ({tData}) => {
                         <ul className="menu menu-horizontal flex flex-col gap-6 text-lg font-medium underline">
                             {/* Navbar menu content here */}
                             <div className='flex gap-6 text-lg font-medium underline'>
-                                <NavLink to={"/"} > <button className='underline  hover:bg-red-300'> Home</button></NavLink>
+                                <NavLink to={"/"} > <button className='underline  hover:bg-red-300 text'> Home</button></NavLink>
                                 <NavLink to={"addJob"} > <button className='underline  hover:bg-red-300'>Add job</button></NavLink>
                                 <NavLink to={"myPostedJob"} > <button className='underline  hover:bg-red-300'> My Posted job</button></NavLink>
                                 <NavLink to={"myBids"} > <button className='underline  hover:bg-red-300'> My Bids</button></NavLink>

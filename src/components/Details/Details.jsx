@@ -43,7 +43,7 @@ const Details = () => {
         // axios api
 
 
-        axios.post("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/employ/allBiddedJobs",biddedJobs)
+        axios.post("http://localhost:5000/api/v1/employ/allBiddedJobs",biddedJobs)
 
             .then(data => {
                 console.log(data.data)

@@ -20,7 +20,7 @@ const MypostedJob = () => {
     const { data, isLoading, isFetching, refetch } = useQuery({
         queryKey: ["addealldDatasdfsf"],
         queryFn: async () => {
-            const res = await axios.get(`https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/getAddedJobsData?email=${user.email}`, {
+            const res = await axios.get(`http://localhost:5000/api/v1/getAddedJobsData?email=${user.email}`, {
                 withCredentials: true
             })
             return await res?.data
@@ -44,7 +44,7 @@ const MypostedJob = () => {
 
     // useefect start
     // useEffect(()=>{
-    //     axios.get("https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/getAddedJobsData",{
+    //     axios.get("http://localhost:5000/api/v1/getAddedJobsData",{
     //         withCredentials:true
     //     })
     //     .then(res=> setAllData(res.data) )

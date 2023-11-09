@@ -11,7 +11,7 @@ const MyBidRequestRow = ({ data, refetch }) => {
     // reject button handler
     const handleReject = (id) => {
         const rejectmsg = { status: "rejected" }
-        axios.patch(`https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/employ/getAllBiddedJobs/${id}`, rejectmsg)
+        axios.patch(`http://localhost:5000/api/v1/employ/getAllBiddedJobs/${id}`, rejectmsg)
             .then(res => {
                 if (res?.data?.modifiedCount > 0) {
 
@@ -39,7 +39,7 @@ const MyBidRequestRow = ({ data, refetch }) => {
     // accept button handler
     const handleAccept = (id) => {
         const acceptmsg = { status: "accepted" }
-        axios.patch(`https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/employ/getAllBiddedJobs/${id}`, acceptmsg)
+        axios.patch(`http://localhost:5000/api/v1/employ/getAllBiddedJobs/${id}`, acceptmsg)
             .then(res => {
 
                 if (res?.data?.modifiedCount > 0) {
@@ -90,15 +90,25 @@ const MyBidRequestRow = ({ data, refetch }) => {
 
 
                         {
-                            status == "rejected" ?
-                                <th> <button disabled onClick={() => handleAccept(_id)} className='btn bg-green-400'> accept</button> </th> :
+                            status == "accepted" ?
+                                <th> <button disabled onClick={() => handleAccept(_id)} className='btn bg-green-400'> accept</button> </th>
+                                
+                                :
+                                status == "rejected"?
+                                <th> <button disabled onClick={() => handleAccept(_id)} className='btn bg-green-400'> accept</button> </th>:
+
+                                
+
                                 <th> <button onClick={() => handleAccept(_id)} className='btn bg-green-400'> accept</button> </th>
 
 
                         }
                         {
                             status == "rejected" ?
-                                <th> <button disabled onClick={() => handleReject(_id)} className='btn bg-green-400'> reject</button> </th> :
+                                <th> <button disabled onClick={() => handleReject(_id)} className='btn bg-green-400'> reject</button> </th>
+                                 :
+                                status == "accepted" ?
+                                <th> <button disabled onClick={() => handleReject(_id)} className='btn bg-green-400'> reject</button> </th>:
                                 <th> <button onClick={() => handleReject(_id)} className='btn bg-green-400'> reject</button> </th>
                         }
 

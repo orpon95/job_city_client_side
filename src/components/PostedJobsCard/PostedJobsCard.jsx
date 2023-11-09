@@ -18,7 +18,7 @@ const PostedJobsCard = ({ cartdata, setLoadedUsers, loadedUsers }) => {
     const { data:addedData, isLoading, isFetching, refetch } = useQuery({
         queryKey: ["onlyFOremai"],
         queryFn: async () => {
-            const res = await axios.get(`https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v4/employ/getAlladdedJobs?email=${user.email}`, {
+            const res = await axios.get(`http://localhost:5000/api/v4/employ/getAlladdedJobs?email=${user.email}`, {
                 withCredentials: true
             })
             return await res?.data
@@ -63,7 +63,7 @@ const PostedJobsCard = ({ cartdata, setLoadedUsers, loadedUsers }) => {
                 //     'success'
                 // )
 
-                axios.delete(`https://job-city-server-fuwxgszdp-yeasins-projects-c520e666.vercel.app/api/v1/employ/deleteJobsCard/${_id}`)
+                axios.delete(`http://localhost:5000/api/v1/employ/deleteJobsCard/${_id}`)
                     .then(res => {
                         console.log(res.data);
                         if (res.data.deletedCount > 0) {

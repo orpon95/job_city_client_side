@@ -97,7 +97,7 @@ const PostedJobsCard = ({ cartdata, setLoadedUsers, loadedUsers }) => {
 
     }
     return (
-        <div className="card  text-center   shadow-xl">
+        <div className="  text-center   shadow-xl">
             {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
             <div className="card-body">
                 <h1>Email : {email}</h1>

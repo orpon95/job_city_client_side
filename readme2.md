@@ -10,7 +10,6 @@
 -  user can bid by seeing a lot of posted jobs 
 **5**: `Delete and update `
 -  owner can update and delete their posted jobs .
-**1**: `website live link `
--  
 
-- wesites live link: https://65334dc0307ae25e8bc85029--chimerical-nougat-2e0911.netlify.app/
+
+## [wesites live link:](https://job-city-b516d.web.app/) 

@@ -98,6 +98,7 @@ const Navbar = ({tData}) => {
                             {/* Navbar menu content here */}
                             <div className='flex gap-6 text-lg font-medium underline'>
                                 <NavLink to={"/"} > <button className='underline  hover:bg-red-300 text'> Home</button></NavLink>
+                                {/* <NavLink to={"/chart"} > <button className='underline  hover:bg-red-300 text'> chart</button></NavLink> */}
                                 <NavLink to={"addJob"} > <button className='underline  hover:bg-red-300'>Add job</button></NavLink>
                                 <NavLink to={"myPostedJob"} > <button className='underline  hover:bg-red-300'> My Posted job</button></NavLink>
                                 <NavLink to={"myBids"} > <button className='underline  hover:bg-red-300'> My Bids</button></NavLink>

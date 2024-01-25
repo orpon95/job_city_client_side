@@ -44,7 +44,7 @@ const Home = () => {
 
             <h1 className='text-4xl font-bold my-8 text-center'> JOBs Categories</h1>
             <div className=' bg-transparent text-center mx-auto' >
-                <Tabs className="p-3 shadow-2xl shadow-black text-center justify-center" >
+                <Tabs className="p-8 shadow-2xl shadow-black text-center justify-center" >
                     <TabList className=" my-8 items-center text-center justify-center" >
                         <div className='flex flex-wrap  gap-2 md:gap-5 justify-center' >
                             <Tab onClick={() => handleTabClick('web development')} ><button className='btn bg-white opacity-60 hover:bg-red-300 hero-overlay text-base md:text-2xl font-bold' >web development</button></Tab>
@@ -83,7 +83,7 @@ const Home = () => {
                         }
                     </TabPanel>
                     <TabPanel>
-                        {<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+                        {<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-8'>
                             {
                                 filteredData.map(data => <JobCard key={data._id} data={data} ></JobCard>)
 

@@ -25,6 +25,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import axios from 'axios';
 import Error from './components/Error/Error.jsx';
 import { HelmetProvider } from 'react-helmet-async';
+import Chart from './components/Chart/Chart.jsx';
 // import { useContext } from 'react';
 
 const queryClient = new QueryClient()
@@ -87,6 +88,11 @@ const router = createBrowserRouter([
       {
         path: "delete/:id",
         element: <Delete></Delete>,
+
+      },
+      {
+        path: "/chart",
+        element: <Chart></Chart>,
 
       },
     ]

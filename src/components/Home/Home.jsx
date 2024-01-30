@@ -7,6 +7,7 @@ import Banner from '../Banner/Banner';
 import AboutUs from './AboutUs/AboutUs';
 import OurPartner from './OurPartner/OurPartner';
 import { Helmet } from 'react-helmet-async';
+import Chart from '../Chart/Chart';
 
 const Home = () => {
 
@@ -46,7 +47,7 @@ const Home = () => {
             <div className=' bg-transparent text-center mx-auto' >
                 <Tabs className="p-8 shadow-2xl shadow-black text-center justify-center" >
                     <TabList className=" my-8 items-center text-center justify-center" >
-                        <div className='flex flex-wrap  gap-2 md:gap-5 justify-center' >
+                        <div className='flex flex-wrap   gap-2 md:gap-5 justify-center' >
                             <Tab onClick={() => handleTabClick('web development')} ><button className='btn bg-white opacity-60 hover:bg-red-300 hero-overlay text-base md:text-2xl font-bold' >web development</button></Tab>
                             <Tab onClick={() => handleTabClick('digital marketing')} ><button className='btn bg-white opacity-60 hover:bg-red-300 hero-overlay text-base md:text-2xl font-bold'>digital marketing</button> </Tab>
                             <Tab onClick={() => handleTabClick('graphics design')} ><button className='btn bg-white opacity-60 hover:bg-red-300 hero-overlay text-base md:text-2xl font-bold'>graphics design</button></Tab>
@@ -103,6 +104,9 @@ const Home = () => {
 
             <AboutUs></AboutUs>
             <OurPartner></OurPartner>
+
+            {/* chart */}
+           
 
         </div>
     );

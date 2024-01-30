@@ -9,7 +9,7 @@ const JobCard = ({ data }) => {
     console.log(data);
     const { categories, deadline, job_title, max_price, min_price, short_description, _id } = data
     return (
-        <div   className=" border-2 border-r-blue-400 rounded-lg bg-transparent  shadow-xl shadow-black  h-[650px]">
+        <div   className=" text-black border-2 border-r-blue-400 rounded-lg bg-transparent  shadow-xl shadow-black  h-[650px]">
             {/* <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> */}
             <div className="card-body">
                 <h2 className="card-title text-2xl text-center"> job categories: </h2>  <span className='text-lg  font-medium'>{categories}</span>
